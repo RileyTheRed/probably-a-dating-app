@@ -13,7 +13,6 @@ import uuid
 app = Flask(__name__,template_folder='static')
 app.config["DEBUG"] = True
 
-
 #Route for /
 @app.route("/")
 def hello():
@@ -29,8 +28,8 @@ def dict_factory(cursor, row):
 #Post request method for /login
 @app.route('/login', methods=['POST'])
 def login():
-    email =  request.form['email'];
-    password = request.form['password'];
+    email =  request.form['email']
+    password = request.form['password']
     con = sql.connect("temp.db")
     con.row_factory = dict_factory
     cur = con.cursor()
@@ -55,9 +54,9 @@ def login():
 #Post request method for /register
 @app.route('/register', methods=['POST'])
 def register():
-    email =  request.form['emailreg'];
-    password = request.form['passwordreg'];
-    passwordconf = request.form['passwordconfreg'];
+    email =  request.form['emailreg']
+    password = request.form['passwordreg']
+    passwordconf = request.form['passwordconfreg']
     con = sql.connect("temp.db", timeout=10)
     con.row_factory = dict_factory
     cur = con.cursor()
@@ -87,7 +86,7 @@ def home():
     #Print json from get request
     print(request.args)
     #Save the email to a variable
-    email =  request.args.get("temp");
+    email =  request.args.get("temp")
     print(email)
     con = sql.connect("temp.db")
     con.row_factory = dict_factory
@@ -105,14 +104,14 @@ def home():
     con.close()
     return jsonify({
         'events': eventdata
-    });
+    })
 
 @app.route('/newEvent', methods=['POST'])
 def newEvent():
     email = request.form['email']
-    eventName =  request.form['eventName'];
-    eventTime = request.form['eventTime'];
-    eventUrl = request.form['eventUrl'];
+    eventName =  request.form['eventName']
+    eventTime = request.form['eventTime']
+    eventUrl = request.form['eventUrl']
     con = sql.connect("temp.db", timeout=10)
     con.row_factory = dict_factory
     cur = con.cursor()

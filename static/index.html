@@ -37,18 +37,22 @@
             </ul>
         </div>
     </nav>
-    <div id='loginComponent' class="container">
-        <div class='row'>
-            <div id='loginDiv' class="col-md-6">
-                <form class="form-signin" id='formLogin' role="form">
-                    <h2>Login </h2>
-                    <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus value="">
-                    <input type="password" name="password" class="form-control" placeholder="Password" required value="">
-                    <span id='errorMessageLogin'></span>
-                    <button id="Login" class="btn btn-lg btn-primary btn-block" type="button">Login</button>
-                </form>
+    <div id='loginComponent'>
+        <div class='container'>
+            <div class='row'>
+                <div id='loginDiv' class="col-md-8">
+                    <form class="form-signin" id='formLogin' role="form">
+                        <h2>Login </h2>
+                        <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus value="">
+                        <input type="password" name="password" class="form-control" placeholder="Password" required value="">
+                        <span id='errorMessageLogin'></span>
+                        <button id="Login" class="btn btn-lg btn-primary btn-block" type="button">Login</button>
+                        <button id='NewUser', class="btn btn-lg btn-primary btn-block", type="button">New User Registration</button>
+                    </form>
+                </div>
             </div>
-            <div id='registerDiv' class="col-md-6">
+
+            <!-- <div id='registerDiv' class="col-md-6">
                 <form class="form-signin" id='formRegister' role="form">
                     <h2>Register </h2>
                     <input type="email" name="emailreg" class="form-control" placeholder="Email address" required autofocus>
@@ -57,6 +61,23 @@
                     <span id='errorMessageReg'></span>
                     <button id="Register" class="btn btn-lg btn-primary btn-block" type="button">Register</button>
                 </form>
+            </div> -->
+        </div>
+    </div>
+
+    <div id='registerComponent'>
+        <div class='container'>
+            <div class='row'>
+                <div id='registerDiv' class="col-md-8">
+                    <form class="form-register" id='formRegister' role="form">
+                        <h2>New User Registration</h2>
+                        <input type="email" name="emailreg" class="form-control" placeholder="Email address" required autofocus>
+                        <input type="password" name="passwordreg" class="form-control" placeholder="Password" required>
+                        <input type="password" name="passwordconfreg" class="form-control" placeholder="Confirm Password" required>
+                        <span id='errorMessageReg'></span>
+                        <button id="Register" class="btn btn-lg btn-primary btn-block" type="button">Register</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -106,7 +127,7 @@
                     </form>
                 </div>
             </div>
-        <div/>
+        </div>
     </div>
  </body>
  

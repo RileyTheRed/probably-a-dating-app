@@ -1,5 +1,6 @@
 $(document).ready(function(){
     $('#homeComponent').hide();
+    $('#registerComponent').hide();
     $('#Login').on('click', function() {
         $.ajax({
             url: '/login',
@@ -19,6 +20,18 @@ $(document).ready(function(){
             },
             error: function(error) {
                 console.log(error);
+            }
+        });
+    });
+    $('#NewUser').on('click', function(){
+        $.ajax({
+            url: '/newUser',
+            success: function(response) {
+                $('#loginComponent').hide();
+                $('#registerComponent').show();
+            },
+            error: function(response) {
+
             }
         });
     });
