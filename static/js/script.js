@@ -32,8 +32,7 @@ $(document).ready(function(){
                 console.log(response);
                 if(response.registered === true){
                     $('#myForm').trigger("reset");
-                    $('#errorMessageReg').text('Registration successful!')
-                    $('#registerComponent').hide();
+                    $('#errorMessageReg').text("Registration Sucessful!");
                     $('#loginComponent').show();
                 }else{
                     $('#errorMessageReg').text('Registration failed. Try again.')

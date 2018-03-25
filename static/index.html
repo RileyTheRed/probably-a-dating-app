@@ -77,14 +77,38 @@
                 <div id='registerDiv' class="col-md-8">
                     <form class="form-register" id='formRegister' role="form">
                         <h2>New User Registration</h2>
+                        <input type="fname" name="fnamereg" class="form-control" placeholder="First Name" required>
+                        <input type="lname" name="lnamereg" class="form-control" placeholder="Last Name" required>
                         <input type="email" name="emailreg" class="form-control" placeholder="Email address" required autofocus>
                         <input type="password" name="passwordreg" class="form-control" placeholder="Password" required>
                         <input type="password" name="passwordconfreg" class="form-control" placeholder="Confirm Password" required>
                         <span id='errorMessageReg'></span>
-                        <button id="Register" class="btn btn-lg btn-primary btn-block" type="button">Register</button>
                     </form>
                 </div>
             </div>
+
+            <div class='row'>
+                <div id='questionDiv' class="col-md-10">
+                    <form class="form-question" id="formQuestion" role="form">
+                        <h2>Please answer the following questions:</h2>
+                        <form>
+                            <h2>What gender are you?</h2>
+                            <input type="radio" name="genderReg" value="male" unchecked> Male<br>
+                            <input type="radio" name="genderReg" value="female" unchecked> Female<br>
+                            <input type="radio" name="genderReg" value="other" unchecked> Other<br>
+                        </form>
+                        <form>
+                            <h2>What is your age?</h2>
+                            <input type="radio" name="ageReg" value="17-23" unchecked> 17 - 23<br>
+                            <input type="radio" name="ageReg" value="24-30" unchecked> 24 - 30<br>
+                            <input type="radio" name="ageReg" value="31-35" unchecked> 31 - 35<br>
+                            <input type="radio" name="ageReg" value="36+" unchecked> 36+<br>
+                            <input type="radio" name="ageReg" value="notgiven" unchecked> Rather Not Give Age<br>
+                        </form>
+                    </form>
+                </div>
+            </div>
+            <button id="Register" class="btn btn-lg btn-primary btn-block" type="button">Register</button>
         </div>
         <!-- <script>
             $(function(){
@@ -98,7 +122,7 @@
         <div class="col-md-3">Content 3</div>
         <div class="col-md-3">Content 4</div>
     </div> -->
-    <div id='homeComponent'>
+    <div id='homeComponent' style="display: none;">
         <script src="{{ url_for('static', filename='js/home.js') }}"></script>
         <div class="container">
             <div class="row">

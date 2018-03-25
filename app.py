@@ -70,8 +70,8 @@ def register():
         print("User not found")
     if password == passwordconf:
         uid = str(uuid.uuid4())
-        firstName = 'Fadi'
-        lastName = 'Bitar'
+        firstName = request.form['fnamereg']
+        lastName = request.form['lnamereg']
         cur.execute("""INSERT INTO Users(id, firstName, lastName, email, password) VALUES (?,?,?,?,?);""", (uid, firstName, lastName, email, password))
         con.commit()
         cur.close()
