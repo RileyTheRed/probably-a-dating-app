@@ -47,9 +47,15 @@
                         <input type="password" name="password" class="form-control" placeholder="Password" required value="">
                         <span id='errorMessageLogin'></span>
                         <button id="Login" class="btn btn-lg btn-primary btn-block" type="button">Login</button>
-                        <button id='NewUser', class="btn btn-lg btn-primary btn-block", type="button">New User Registration</button>
+                        <button id='NewUser', class="btn btn-lg btn-primary btn-block", type="button" >New User Registration</button>
                     </form>
                 </div>
+                <script>
+                    $('#NewUser').click(function(){
+                        $('#loginComponent').hide();
+                        $('#registerComponent').show();
+                    })
+                </script>
             </div>
 
             <!-- <div id='registerDiv' class="col-md-6">
@@ -65,7 +71,7 @@
         </div>
     </div>
 
-    <div id='registerComponent'>
+    <div id='registerComponent' style="display: none;">
         <div class='container'>
             <div class='row'>
                 <div id='registerDiv' class="col-md-8">
@@ -80,6 +86,11 @@
                 </div>
             </div>
         </div>
+        <!-- <script>
+            $(function(){
+                $('#registerComponent').hide();
+            });
+        </script> -->
     </div>
     <!-- <div class="row">
         <div class="col-md-3">Content 1</div>
