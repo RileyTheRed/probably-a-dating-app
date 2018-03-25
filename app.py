@@ -10,17 +10,14 @@ import uuid
 # dotenv_path = join(dirname(__file__), '.env')
 # load_dotenv(dotenv_path)
 
-app = Flask(__name__, template_folder='static')
+app = Flask(__name__,template_folder='static')
 app.config["DEBUG"] = True
 
-
-if __name__ == "__main__":
-    app.run(port=5000)
 
 #Route for /
 @app.route("/")
 def hello():
-    return render_template('/index.html')
+    return render_template('index.html')
 
 #Make SQL cursor return dictionary 
 def dict_factory(cursor, row):
@@ -129,3 +126,7 @@ def newEvent():
     return jsonify({
         'newEventStatus': True
     })
+
+
+if __name__ == "__main__":
+    app.run(port=5040)
