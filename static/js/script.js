@@ -61,6 +61,21 @@ $(document).ready(function(){
         getTable();
     });
 
+    $('#Logout').on('click', function(){
+        $.ajax({
+            url: '/logout',
+            type: 'POST',
+            success: function(response) {
+                console.log(response);
+                $('#homeComponent').hide();
+                $('#loginComponent').show();
+            },
+            error: function(error){
+                console.log(error);
+            }
+        });
+    });
+
     $('#EventSubmit').on('click', function() {
         let user = JSON.parse(localStorage.getItem('userdata'));
         let tempForm = {

@@ -37,6 +37,10 @@ def login():
     temp = cur.fetchone()
     cur.close()
     print(temp)
+    if(temp == None):  
+        return jsonify({
+            'auth': False
+        })
     if email == temp["email"] and password == temp["password"]:
         return jsonify({
             'auth': True,
@@ -50,6 +54,17 @@ def login():
         return jsonify({
             'auth': False
         })
+
+@app.route('/logout', methods=['POST'])
+def logout():
+    return jsonify({
+        'auth': False,
+        'user': {
+            "email": "",
+            "firstName": "",
+            "lastName": ""
+        }
+    })
 
 #Post request method for /register
 @app.route('/register', methods=['POST'])
@@ -93,7 +108,7 @@ def home():
     cur = con.cursor()
     # Uncomment the following line to create the table then comment it again after the first registration
     # cur.execute("CREATE TABLE event(id INT PRIMARY_KEY, email TEXT, eventName TEXT, eventTime TEXT, eventUrl TEXT)")
-    uid = str(uuid.uuid4())
+    # uid = str(uuid.uuid4())
     # Uncomment to make a test Event
     # cur.execute("""INSERT INTO event(id, email, eventName, eventTime, eventUrl) VALUES(?,?,?,?,?)""",(uid, email, 'Event Name 3', 'Date 3', 'bullsync3.com'))
     cur.execute("SELECT * FROM event WHERE email=?", (email,))
