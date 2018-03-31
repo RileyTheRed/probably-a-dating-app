@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $('#homeComponent').hide();
+    $('#registerComponent').hide();
     $('#Login').on('click', function() {
         $.ajax({
             url: '/login',
@@ -10,6 +10,7 @@ $(document).ready(function(){
                 if(response.auth === true){
                     localStorage.setItem('userdata', JSON.stringify(response.user));
                     $('#loginComponent').hide();
+                    $('#registerComponent').hide();
                     $('#homeComponent').show();
                     populateUser();
                     // getTable();
@@ -31,7 +32,8 @@ $(document).ready(function(){
                 console.log(response);
                 if(response.registered === true){
                     $('#myForm').trigger("reset");
-                    $('#errorMessageReg').text('Registration successful!')
+                    $('#errorMessageReg').text("Registration Sucessful!");
+                    $('#loginComponent').show();
                 }else{
                     $('#errorMessageReg').text('Registration failed. Try again.')
                 }
@@ -57,6 +59,21 @@ $(document).ready(function(){
     
     $('#PopulateTable').on('click', function() {
         getTable();
+    });
+
+    $('#Logout').on('click', function(){
+        $.ajax({
+            url: '/logout',
+            type: 'POST',
+            success: function(response) {
+                console.log(response);
+                $('#homeComponent').hide();
+                $('#loginComponent').show();
+            },
+            error: function(error){
+                console.log(error);
+            }
+        });
     });
 
     $('#EventSubmit').on('click', function() {

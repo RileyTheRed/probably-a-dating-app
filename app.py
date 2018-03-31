@@ -10,17 +10,13 @@ import uuid
 # dotenv_path = join(dirname(__file__), '.env')
 # load_dotenv(dotenv_path)
 
-app = Flask(__name__, template_folder='static')
+app = Flask(__name__,template_folder='static')
 app.config["DEBUG"] = True
-
-
-if __name__ == "__main__":
-    app.run(port=5000)
 
 #Route for /
 @app.route("/")
 def hello():
-    return render_template('/index.html')
+    return render_template('index.html')
 
 #Make SQL cursor return dictionary 
 def dict_factory(cursor, row):
@@ -32,8 +28,8 @@ def dict_factory(cursor, row):
 #Post request method for /login
 @app.route('/login', methods=['POST'])
 def login():
-    email =  request.form['email'];
-    password = request.form['password'];
+    email =  request.form['email']
+    password = request.form['password']
     con = sql.connect("temp.db")
     con.row_factory = dict_factory
     cur = con.cursor()
@@ -41,6 +37,10 @@ def login():
     temp = cur.fetchone()
     cur.close()
     print(temp)
+    if(temp == None):  
+        return jsonify({
+            'auth': False
+        })
     if email == temp["email"] and password == temp["password"]:
         return jsonify({
             'auth': True,
@@ -55,12 +55,23 @@ def login():
             'auth': False
         })
 
+@app.route('/logout', methods=['POST'])
+def logout():
+    return jsonify({
+        'auth': False,
+        'user': {
+            "email": "",
+            "firstName": "",
+            "lastName": ""
+        }
+    })
+
 #Post request method for /register
 @app.route('/register', methods=['POST'])
 def register():
-    email =  request.form['emailreg'];
-    password = request.form['passwordreg'];
-    passwordconf = request.form['passwordconfreg'];
+    email =  request.form['emailreg']
+    password = request.form['passwordreg']
+    passwordconf = request.form['passwordconfreg']
     con = sql.connect("temp.db", timeout=10)
     con.row_factory = dict_factory
     cur = con.cursor()
@@ -74,8 +85,8 @@ def register():
         print("User not found")
     if password == passwordconf:
         uid = str(uuid.uuid4())
-        firstName = 'Fadi'
-        lastName = 'Bitar'
+        firstName = request.form['fnamereg']
+        lastName = request.form['lnamereg']
         cur.execute("""INSERT INTO Users(id, firstName, lastName, email, password) VALUES (?,?,?,?,?);""", (uid, firstName, lastName, email, password))
         con.commit()
         cur.close()
@@ -90,14 +101,14 @@ def home():
     #Print json from get request
     print(request.args)
     #Save the email to a variable
-    email =  request.args.get("temp");
+    email =  request.args.get("temp")
     print(email)
     con = sql.connect("temp.db")
     con.row_factory = dict_factory
     cur = con.cursor()
     # Uncomment the following line to create the table then comment it again after the first registration
     # cur.execute("CREATE TABLE event(id INT PRIMARY_KEY, email TEXT, eventName TEXT, eventTime TEXT, eventUrl TEXT)")
-    uid = str(uuid.uuid4())
+    # uid = str(uuid.uuid4())
     # Uncomment to make a test Event
     # cur.execute("""INSERT INTO event(id, email, eventName, eventTime, eventUrl) VALUES(?,?,?,?,?)""",(uid, email, 'Event Name 3', 'Date 3', 'bullsync3.com'))
     cur.execute("SELECT * FROM event WHERE email=?", (email,))
@@ -108,14 +119,14 @@ def home():
     con.close()
     return jsonify({
         'events': eventdata
-    });
+    })
 
 @app.route('/newEvent', methods=['POST'])
 def newEvent():
     email = request.form['email']
-    eventName =  request.form['eventName'];
-    eventTime = request.form['eventTime'];
-    eventUrl = request.form['eventUrl'];
+    eventName =  request.form['eventName']
+    eventTime = request.form['eventTime']
+    eventUrl = request.form['eventUrl']
     con = sql.connect("temp.db", timeout=10)
     con.row_factory = dict_factory
     cur = con.cursor()
@@ -129,3 +140,7 @@ def newEvent():
     return jsonify({
         'newEventStatus': True
     })
+
+
+if __name__ == "__main__":
+    app.run(port=5040)
