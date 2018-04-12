@@ -1,0 +1,29 @@
+<!--INTRO PAGE-->
+{% extends "skeleton.html" %}
+{% block content %}
+<div id="intro" class="container-fluid">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="content-fluid" style="text-align: center;">
+        <form class="login-form col-md-4 offset-md-4">
+            <h1>Welcome</h1>
+            <div class="form-group">
+                <input type="text" class="form-control" name="user-email" placeholder="Email" required="required">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="user-pass" placeholder="Password" required="required">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-dark btn-block">Login</button>
+            </div>
+            <div class="form-group">
+            </div>
+        </form>
+        <p class="text-center"><a href="{{ url_for('reg') }}">Create an Account</a></p>
+    </div>
+</div>
+
+{% endblock %}

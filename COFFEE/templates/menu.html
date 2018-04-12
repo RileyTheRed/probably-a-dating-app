@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href={{ url_for('static', filename='css/bootstrap.min.css') }}>
+        <link rel="stylesheet" href={{ url_for('static', filename='css/stylesheet.css') }}>
+        <title>CoffeeDate</title>
+    </head>
+    <body>
+        <nav class="nav text-center">
+            <a class="nav-link" href="#">HOME</a>
+            <a class="nav-link" href="#">ABOUT</a>
+            <a class="nav-link" href="#">CONTENT</a>
+        </nav>
+        {% block content %}
+        {% endblock %} 
+    <script src={{ url_for('static', filename='js/bootstrap.min.js') }}></script>
+    </body>
+</html>
