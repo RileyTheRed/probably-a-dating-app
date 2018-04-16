@@ -53,10 +53,11 @@ def adjusted_compatability(n,com_range):
     return (((n-com_range[0])*100) / (com_range[1] - com_range[0]))
 
 
-if __name__ == "__main__":
+#main return function
+def get_matches(person):
 
-    test_subject = "adebiasi4o@exblog.jp"
-    qrange = min_max(test_subject)
+    qrange = min_max(person)
+    matches = []
 
     try:
         
@@ -64,25 +65,65 @@ if __name__ == "__main__":
         cur1 = con.cursor()
         cur2 = con.cursor()
 
-        p1_deets = cur1.execute("select * from users where uemail=?",(test_subject,)).fetchone()
-        p1_ans = cur1.execute("select * from questionnaire where qemail=?",(test_subject,)).fetchone()
+        p1_deets = cur1.execute("select * from users where uemail=?",(person,)).fetchone()
+        p1_ans = cur1.execute("select * from questionnaire where qemail=?",(person,)).fetchone()
 
         person1 = (p1_deets,p1_ans)
 
         cur1.execute("select * from users")
         for row1 in cur1:
-            if test_subject == row1[0]:
+            if person == row1[0]:
                 continue
             else:
                 if person1[1][1] == row1[3]:
                     cur2.execute("select * from questionnaire where qemail=?",(row1[0],))
                     for row2 in cur2:
                         if row2[1] == person1[0][3]:
-                            print("{0} {1} is %{2:.2f} compatible with {3} {4}".format(person1[0][1],person1[0][2],adjusted_compatability(compatability(compare(person1[1][2:],row2[2:])),qrange),row1[1],row1[2]))
+                            matches.append([person,adjusted_compatability(compatability(compare(person1[1][2:],row2[2:])),qrange),row1[0]])
+                            # print("{0} {1} is %{2:.2f} compatible with {3} {4}".format(person1[0][1],person1[0][2],adjusted_compatability(compatability(compare(person1[1][2:],row2[2:])),qrange),row1[1],row1[2]))
 
         cur1.close()
         cur2.close()
         con.close()
+        return matches
 
     except Exception as e:
         raise e
+
+
+if __name__ == "__main__":
+
+
+    for row in get_matches('adebiasi4o@exblog.jp'):
+        print(row)
+#     test_subject = "adebiasi4o@exblog.jp"
+#     qrange = min_max(test_subject)
+
+#     try:
+        
+#         con = sql.connect("../dating.db", timeout=10)
+#         cur1 = con.cursor()
+#         cur2 = con.cursor()
+
+#         p1_deets = cur1.execute("select * from users where uemail=?",(test_subject,)).fetchone()
+#         p1_ans = cur1.execute("select * from questionnaire where qemail=?",(test_subject,)).fetchone()
+
+#         person1 = (p1_deets,p1_ans)
+
+#         cur1.execute("select * from users")
+#         for row1 in cur1:
+#             if test_subject == row1[0]:
+#                 continue
+#             else:
+#                 if person1[1][1] == row1[3]:
+#                     cur2.execute("select * from questionnaire where qemail=?",(row1[0],))
+#                     for row2 in cur2:
+#                         if row2[1] == person1[0][3]:
+#                             print("{0} {1} is %{2:.2f} compatible with {3} {4}".format(person1[0][1],person1[0][2],adjusted_compatability(compatability(compare(person1[1][2:],row2[2:])),qrange),row1[1],row1[2]))
+
+#         cur1.close()
+#         cur2.close()
+#         con.close()
+
+#     except Exception as e:
+#         raise e

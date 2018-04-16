@@ -1,6 +1,10 @@
 #Version 1.0 of the liking algorithm
 ######
 
+# import 'match.py'
+# import importlib
+# importlib.import_module('match.py')
+
 import sqlite3 as sql
 
 #definition of the liked function
@@ -45,3 +49,7 @@ def get_mutual_likes(person):
 
     except Exception as e:
         raise e
+
+
+# if __name__ == "__main__":
+
