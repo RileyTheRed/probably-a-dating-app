@@ -1,0 +1,38 @@
+.bg{
+	background: url('https://images.unsplash.com/photo-1429681601148-75510b2cef43?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9505cdf4eaedc1e8004cc8fef8c69566&auto=format&fit=crop&w=1650&q=80') no-repeat;
+	width: 100%;
+	height: 100%;
+	overflow: scroll;
+}
+
+body,
+html {
+    font-family: "Lato";
+    width: 100%;
+	height: 100%;
+}
+
+h1 {
+	font-weight: 700;
+	font-size: 4em;
+	padding-bottom: 20px;
+}
+
+.form-container{
+	border: 0px solid #fff;
+	padding: 60px 80px;
+	margin-top: 20vh;
+	-webkit-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+	-moz-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+	-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+}
+
+.form-group{
+	font-family: "Lato";
+	color: white;
+	font-size: 2em;
+	text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+                 0px 8px 13px rgba(0,0,0,0.1),
+                 0px 18px 23px rgba(0,0,0,0.1);
+}
+
