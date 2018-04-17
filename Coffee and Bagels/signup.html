@@ -1,83 +1,140 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Sign Up</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+<head>Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
-	<link rel="stylesheet" type="text/css" href="css/signup.css">
+  <link rel="stylesheet" type="text/css" href="css/login.css">
+
 </head>
 <body>
 
- <!-- navbar start-->
+<!-- navbar start-->
  <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
-    	<a class="navbar-brand" href="index.html">Coffee and Bagels</a>
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <!-- <a class="navbar-brand" href="#">Coffee and Bagels</a> -->
+      <a class="navbar-brand" href="index.html">Coffee and Bagels</a>
     </div>
-    <div id="navbar" class="navbar-collapse collapse in" aria-expanded="true" style="">
+    <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="index.html">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="signup.html">Signup</a></li>
+        <li class="active"><a href="signup.html">Signup</a></li>
         <li><a href="login.html">Login</a></li>
       </ul>
     </div>
   </div>
  </nav>
- 
  <!-- navbar end -->
 
 <div class="container-fluid bg">
-	<div class="row">
- 		<div class="col-md-2 col-xs-12"></div>
- 		<div class="col-md-8 col-xs-12" id="suform">
- 		<!-- form start  -->
- 			<form class="form-container">
- 				<h1>Sign Up</h1>
- 					<div class="form-group">
- 	    			<label for="firstName">First Name</label>
- 	    			<input type="text" class="form-control input-lg" id="firstName"  placeholder="First Name">
- 	  			</div>
- 	  			<div class="form-group">
- 	    			<label for="lastName">Last Name</label>
- 	    			<input type="text" class="form-control input-lg" id="lastName"  placeholder="Last Name">
- 	  			</div>
- 	  			<div class="form-group">
- 	    			<label for="exampleInputEmail1">Email address</label>
- 	    			<input type="email" class="form-control input-lg" id="exampleInputEmail1"  placeholder="Email">
- 	  			</div>
- 	  			<div class="form-group">
- 	    			<label for="exampleInputPassword1">Password</label>
- 	    			<input type="password" class="form-control input-lg" id="exampleInputPassword1" placeholder="Password">
- 	  			</div>
- 	  			<button type="submit" class="btn btn-success btn-block">Submit</button>
- 			</form>
- 		<!-- form end -->
- 		</div>
- 		<div class="col-md-2 col-xs-12"></div>
- 	</div>
+  <div class="row">
+    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12"></div>
+    <div class="col-lg-8 col-md-8 col-sm-4 col-xs-12">
+      <form class="form-container">
+        <h1 align="center">Sign Up</h1>
+        <div class="form-row">
+          <div class="form-group col-md-6" id="info-half-right">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" placeholder="First Name">
+          </div>
+          <div class="form-group col-md-6" id="info-half-left">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6" id="info-half-right">
+            <label for="emailID">Email</label>
+            <input type="email" class="form-control" id="emailID" placeholder="Email">
+          </div>
+          <div class="form-group col-md-6" id="info-half-left">
+            <label for="passwordforID">Password</label>
+            <input type="password" class="form-control" id="passwordforID" placeholder="Password">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">What is your major?</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>Computer Science/Engineering</option>
+            <option>Business</option>
+            <option>History</option>
+            <option>English Language and Literature</option>
+            <option>Nursing</option>
+            <option>Education</option>
+            <option>Criminology</option>
+            <option>Biotechnology</option>
+            <option>Psychology</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlSelect2">What is your favorite genre of music?</label>
+          <select class="form-control" id="exampleFormControlSelect2">
+            <option>Pop</option>
+            <option>Rock</option>
+            <option>Metal</option>
+            <option>Indie</option>
+            <option>Country</option>
+            <option>Jazz</option>
+            <option>Rhythm and Blues</option>
+            <option>Rap</option>
+            <option>Classical</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlSelect3">What is your favorite movie genre?</label>
+          <select class="form-control" id="exampleFormControlSelect3">
+            <option>Horror</option>
+            <option>Romance</option>
+            <option>Comedy</option>
+            <option>Animation</option>
+            <option>Adventure</option>
+            <option>Thriller</option>
+            <option>Action</option>
+            <option>Documentary</option>
+            <option>International</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlSelect4">What is your favorite color?</label>
+          <select class="form-control" id="exampleFormControlSelect4">
+            <option>Red</option>
+            <option>Blue</option>
+            <option>Green</option>
+            <option>Yellow</option>
+            <option>Brown</option>
+            <option>Purple</option>
+            <option>Orange</option>
+            <option>Black</option>
+            <option>White</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-success btn-block">Submit</button>
+      </form>
+    <!-- form end -->
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12"></div>
+  </div>
  </div>
- <!-- <footer class="container-fluid fixed-bottom" style="background-color: black;">
- 	<h1>CoffeDate</h1>
- </footer> -->
 
- <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
- <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
- <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

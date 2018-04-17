@@ -3,6 +3,7 @@
 	width: 100%;
 	height: 100%;
 	overflow: scroll;
+	padding-bottom: 80px;
 }
 
 body,
@@ -35,4 +36,22 @@ h1 {
                  0px 8px 13px rgba(0,0,0,0.1),
                  0px 18px 23px rgba(0,0,0,0.1);
 }
+
+.radio-inline{
+	text-shadow: none;
+	color: white;
+	font-size: 1em;
+}
+
+#info-half-right{
+	padding-right: 10px;
+	padding-left: 0;
+}
+
+#info-half-left{
+	padding-left: 10px;
+	padding-right: 0;
+}
+
+
 
