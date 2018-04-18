@@ -32,22 +32,28 @@
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="exampleFormControlSelect1">What is your major?</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>Computer Science/Engineering</option>
-            <option>Business</option>
-            <option>History</option>
-            <option>English Language and Literature</option>
-            <option>Nursing</option>
-            <option>Education</option>
-            <option>Criminology</option>
-            <option>Biotechnology</option>
-            <option>Psychology</option>
-          </select>
-        </div>
+        <!-- <div class="form-row">
+          <div class="col-md-6">
+            <p>For the following statements, give your rating on how much you agree with each.</p>
+            <p>1 = Strongly Disagree, 5 = Strongly Agree</p>
+          </div>
+        </div> -->
+        {% for q in questions %}
+          {% for num,quest in q.items() %}
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">{{quest}}</label>
+              <select class="form-control" id={{num}}>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+          {% endfor %}
+        {% endfor %}
 
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="exampleFormControlSelect2">What is your favorite genre of music?</label>
           <select class="form-control" id="exampleFormControlSelect2">
             <option>Pop</option>
@@ -90,7 +96,7 @@
             <option>Black</option>
             <option>White</option>
           </select>
-        </div>
+        </div> -->
 
         <button type="submit" class="btn btn-success btn-block">Submit</button>
       </form>
