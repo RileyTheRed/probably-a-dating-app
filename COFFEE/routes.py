@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 app = Flask(__name__)
 
 questions = ['When I make a plan, I stick to it:', 'I take time out for others:',
