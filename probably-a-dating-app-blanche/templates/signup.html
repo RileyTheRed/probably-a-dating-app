@@ -38,11 +38,32 @@
             <p>1 = Strongly Disagree, 5 = Strongly Agree</p>
           </div>
         </div> -->
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">What is your gender?</label>
+            <select class="form-control" id="gender">
+              <option>-</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Rather Not Say</option>
+            </select>
+          </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Who are you looking to be matched with?</label>
+            <select class="form-control" id="genderPreference">
+              <option>-</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>No Preference</option>
+            </select>
+          </div>
+
         {% for q in questions %}
           {% for num,quest in q.items() %}
             <div class="form-group">
               <label for="exampleFormControlSelect1">{{quest}}</label>
               <select class="form-control" id={{num}}>
+                <option>-</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
