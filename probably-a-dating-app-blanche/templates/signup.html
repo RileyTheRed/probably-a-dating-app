@@ -1,0 +1,102 @@
+{% extends 'layout.html' %}
+{% block head %}
+<title>Signup</title>
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/signup.css')}}">
+{% endblock %}
+{% block content %}
+<div class="container-fluid bg">
+  <div class="row">
+    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12"></div>
+    <div class="col-lg-8 col-md-8 col-sm-4 col-xs-12">
+      <form class="form-container">
+        <h1 align="center">Sign Up</h1>
+        <div class="form-row">
+          <div class="form-group col-md-6" id="info-half-right">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" placeholder="First Name">
+          </div>
+          <div class="form-group col-md-6" id="info-half-left">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6" id="info-half-right">
+            <label for="emailID">Email</label>
+            <input type="email" class="form-control" id="emailID" placeholder="Email">
+          </div>
+          <div class="form-group col-md-6" id="info-half-left">
+            <label for="passwordforID">Password</label>
+            <input type="password" class="form-control" id="passwordforID" placeholder="Password">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">What is your major?</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>Computer Science/Engineering</option>
+            <option>Business</option>
+            <option>History</option>
+            <option>English Language and Literature</option>
+            <option>Nursing</option>
+            <option>Education</option>
+            <option>Criminology</option>
+            <option>Biotechnology</option>
+            <option>Psychology</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlSelect2">What is your favorite genre of music?</label>
+          <select class="form-control" id="exampleFormControlSelect2">
+            <option>Pop</option>
+            <option>Rock</option>
+            <option>Metal</option>
+            <option>Indie</option>
+            <option>Country</option>
+            <option>Jazz</option>
+            <option>Rhythm and Blues</option>
+            <option>Rap</option>
+            <option>Classical</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlSelect3">What is your favorite movie genre?</label>
+          <select class="form-control" id="exampleFormControlSelect3">
+            <option>Horror</option>
+            <option>Romance</option>
+            <option>Comedy</option>
+            <option>Animation</option>
+            <option>Adventure</option>
+            <option>Thriller</option>
+            <option>Action</option>
+            <option>Documentary</option>
+            <option>International</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlSelect4">What is your favorite color?</label>
+          <select class="form-control" id="exampleFormControlSelect4">
+            <option>Red</option>
+            <option>Blue</option>
+            <option>Green</option>
+            <option>Yellow</option>
+            <option>Brown</option>
+            <option>Purple</option>
+            <option>Orange</option>
+            <option>Black</option>
+            <option>White</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-success btn-block">Submit</button>
+      </form>
+    <!-- form end -->
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12"></div>
+  </div>
+ </div>
+{% endblock %}
