@@ -1,0 +1,65 @@
+{% extends 'skeleton.html' %}
+{% block content %}
+<br>
+<br>
+<div class="content-fluid">
+    <form>
+        <div class="row">
+            <div class="col-sm-6 offset-md-3">
+                <div class="row form-group">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="First Name">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Last Name">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 offset-md-3">
+                <div class="row form-group">
+                    <div class="col">
+                        <input type="email" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="col">
+                        <input type="password" class="form-control" placeholder="Password">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <br>
+    <div class="row-md-6">
+        <div class="col-md-8 offset-md-2">
+            <p>Rate the following statements on a scale of 1 to 5: 1 meaning you strongly disagree and 5 meaning the opposite.</p>
+        </div>
+    </div>
+    {% for q in questions %}
+    <form class="form-group">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 questionaire">
+                <div class="row">
+                    <h6 class="col-md-8" style="text-align: left">{{ q }}</h6>
+                    <div class="col-md-4 form-group" style="text-align: right">
+<<<<<<< HEAD
+                        <label class="radio-inline"><input type="radio" name={{ q }} value="1">1</label>
+                        <label class="radio-inline"><input type="radio" name={{ q }} value="2">2</label>
+                        <label class="radio-inline"><input type="radio" name={{ q }} value="3">3</label>
+                        <label class="radio-inline"><input type="radio" name={{ q }} value="4">4</label>
+                        <label class="radio-inline"><input type="radio" name={{ q }} value="5">5</label>
+=======
+                        <label class="radio-inline"><input checked="checked" type="radio" name="{{ q }}" value="1">1</label>
+                        <label class="radio-inline"><input type="radio" name="{{ q }}" value="2">2</label>
+                        <label class="radio-inline"><input type="radio" name="{{ q }}" value="3">3</label>
+                        <label class="radio-inline"><input type="radio" name="{{ q }}" value="4">4</label>
+                        <label class="radio-inline"><input type="radio" name="{{ q }}" value="5">5</label>
+>>>>>>> denis
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    {% endfor %}
+</div>
+{% endblock %} 
