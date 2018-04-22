@@ -3,7 +3,7 @@ app = Flask(__name__)
 
 questions = ['When I make a plan, I stick to it:', 'I take time out for others:',
              'I feel unable to deal with things:', 'I love to help others:', 
-             'I seek adventure', 'The first place I put my dirty clothes is in the hamper:', 'I often carry the conversation to a higher level:', 'I am a morning person:', 'I often make others feel good:', 'I am good at analyzing problems:' 'I usually stand up for myself:', 'I am easily discouraged:', 'I can handle a lot of information:']
+             'I seek adventure', 'The first place I put my dirty clothes is in the hamper:', 'I often carry the conversation to a higher level:', 'I am a morning person:', 'I often make others feel good:', 'I am good at analyzing problems:', 'I usually stand up for myself:', 'I am easily discouraged:', 'I can handle a lot of information:']
 
 @app.route('/')
 def index():

@@ -30,6 +30,11 @@
         </div>
     </form>
     <br>
+    <div class="row-md-6">
+        <div class="col-md-8 offset-md-2">
+            <p>Rate the following statements on a scale of 1 to 5: 1 meaning you strongly disagree and 5 meaning the opposite.</p>
+        </div>
+    </div>
     {% for q in questions %}
     <form class="form-group">
         <div class="row">
@@ -37,11 +42,19 @@
                 <div class="row">
                     <h6 class="col-md-8" style="text-align: left">{{ q }}</h6>
                     <div class="col-md-4 form-group" style="text-align: right">
+<<<<<<< HEAD
+                        <label class="radio-inline"><input type="radio" name={{ q }} value="1">1</label>
+                        <label class="radio-inline"><input type="radio" name={{ q }} value="2">2</label>
+                        <label class="radio-inline"><input type="radio" name={{ q }} value="3">3</label>
+                        <label class="radio-inline"><input type="radio" name={{ q }} value="4">4</label>
+                        <label class="radio-inline"><input type="radio" name={{ q }} value="5">5</label>
+=======
                         <label class="radio-inline"><input checked="checked" type="radio" name="{{ q }}" value="1">1</label>
                         <label class="radio-inline"><input type="radio" name="{{ q }}" value="2">2</label>
                         <label class="radio-inline"><input type="radio" name="{{ q }}" value="3">3</label>
                         <label class="radio-inline"><input type="radio" name="{{ q }}" value="4">4</label>
                         <label class="radio-inline"><input type="radio" name="{{ q }}" value="5">5</label>
+>>>>>>> denis
                     </div>
                 </div>
             </div>

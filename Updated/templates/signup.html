@@ -10,44 +10,70 @@
     <div class="col-lg-8 col-md-8 col-sm-4 col-xs-12">
       <form class="form-container">
         <h1 align="center">Sign Up</h1>
+        
         <div class="form-row">
-          <div class="form-group col-md-6" id="info-half-right">
+          <div class="form-group col-md-6">
             <label for="firstName">First Name</label>
             <input type="text" class="form-control" id="firstName" placeholder="First Name">
           </div>
-          <div class="form-group col-md-6" id="info-half-left">
+          <div class="form-group col-md-6">
             <label for="lastName">Last Name</label>
             <input type="text" class="form-control" id="lastName" placeholder="Last Name">
           </div>
         </div>
 
         <div class="form-row">
-          <div class="form-group col-md-6" id="info-half-right">
+          <div class="form-group col-md-6">
             <label for="emailID">Email</label>
             <input type="email" class="form-control" id="emailID" placeholder="Email">
           </div>
-          <div class="form-group col-md-6" id="info-half-left">
+          <div class="form-group col-md-6">
             <label for="passwordforID">Password</label>
             <input type="password" class="form-control" id="passwordforID" placeholder="Password">
           </div>
         </div>
 
         <div class="form-group">
-          <label for="exampleFormControlSelect1">What is your major?</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>Computer Science/Engineering</option>
-            <option>Business</option>
-            <option>History</option>
-            <option>English Language and Literature</option>
-            <option>Nursing</option>
-            <option>Education</option>
-            <option>Criminology</option>
-            <option>Biotechnology</option>
-            <option>Psychology</option>
-          </select>
+          <p align="center"><strong>For the following statements, give your rating on how much you agree with each.<br>1 = Strongly Disagree, 5 = Strongly Agree</strong></p>
         </div>
 
         <div class="form-group">
+            <label for="exampleFormControlSelect1">What is your gender?</label>
+            <select class="form-control" id="gender" required>
+              <option>-</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Rather Not Say</option>
+            </select>
+          </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Who are you looking to be matched with?</label>
+            <select class="form-control" id="genderPreference" required>
+              <option>-</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>No Preference</option>
+            </select>
+          </div>
+
+        {% for q in questions %}
+          {% for num,quest in q.items() %}
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">{{quest}}</label>
+              <select class="form-control" id={{num}} required>
+                <option>-</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+          {% endfor %}
+        {% endfor %}
+
+        <!-- <div class="form-group">
           <label for="exampleFormControlSelect2">What is your favorite genre of music?</label>
           <select class="form-control" id="exampleFormControlSelect2">
             <option>Pop</option>
@@ -90,7 +116,7 @@
             <option>Black</option>
             <option>White</option>
           </select>
-        </div>
+        </div> -->
 
         <button type="submit" class="btn btn-success btn-block">Submit</button>
       </form>
