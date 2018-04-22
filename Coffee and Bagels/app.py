@@ -1,5 +1,12 @@
 import sqlite3 as sql
 from flask import Flask, request, render_template
+from flask_wtf import FlaskForm
+from wtforms import PasswordField, StringField
+
+class SignUpForm(FlaskForm):
+    first_name = StringField('First Name', render_kw={"placeholder": "test"})
+    user_email = StringField('user_email')
+    user_password = PasswordField('user_password')
 
 questions = [{"1":"When I make a plan, I stick to it."},{"2":"I take time out of my day for others."},
     {"3":"I feel unable to deal with things."},{"4":"I love to help others."},{"5":"I seek adventure."},
@@ -13,6 +20,7 @@ questions = [{"1":"When I make a plan, I stick to it."},{"2":"I take time out of
     {"20":"I believe in true love."}]
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = "TOBEDECIDED"
 
 @app.route('/')
 def index():
@@ -24,7 +32,8 @@ def login():
 
 @app.route('/signup')
 def signup():
-    return render_template('signup.html', questions=questions)
+    form = SignUpForm()
+    return render_template('signup.html', questions=questions, signup_form = form)
 
 @app.route('/dashboard')
 def dashboard():

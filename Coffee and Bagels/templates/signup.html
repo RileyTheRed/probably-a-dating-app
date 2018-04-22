@@ -15,10 +15,15 @@
 
           <p><h1 id="heading">Sign Up</h1></p>
 
-          <form>
-            <div class="form-group">
+          <form method="post" action="{{url_for('signup')}}">
+            <div class="form-group"> 
+                {{ signup_form.csrf_token }}
+                <label>{{ signup_form.first_name.label }}</label>
+                {{ signup_form.first_name(class="form-control")}}
+<!--
               <label for="firstName">First Name</label>
               <input type="text" class="form-control" id="firstName" placeholder="First Name">
+-->
             </div>
             <div class="form-group">
               <label for="lastName">Last Name</label>
