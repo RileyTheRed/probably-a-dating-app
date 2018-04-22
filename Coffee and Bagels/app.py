@@ -1,5 +1,9 @@
 import sqlite3 as sql
 from flask import Flask, request, render_template
+from flask.ext.wtf import Form
+from wtforms import BooleanField, PasswordField, SubmitField, TextField
+from wtforms.validators import DataRequired, Email, EqualTo, Length
+from wtforms import ValidationError
 
 questions = [{"1":"When I make a plan, I stick to it."},{"2":"I take time out of my day for others."},
     {"3":"I feel unable to deal with things."},{"4":"I love to help others."},{"5":"I seek adventure."},
@@ -14,6 +18,21 @@ questions = [{"1":"When I make a plan, I stick to it."},{"2":"I take time out of
 
 app = Flask(__name__)
 
+class LoginForm(Form):
+    user_email = TextField('Email',
+            validators=[DataRequired(), Length(1, 64), Email()])
+    user_pass = PasswordField('Password', validators=[DataRequired()])
+
+class SignupForm(Form):
+    first_name = TextField('First Name',
+            validators=[DataRequired(), Length(min=3, max=32)])
+    last_name = TextField('Last Name',
+            validators=[DataRequired(), Length(min=3, max=32)])
+    user_email = TextField('Email',
+            validators=[DataRequired(), Email(), Length(min=6, max=40)])
+    user_pass = PasswordField('Password',
+            validators=[DataRequired(), Length(min=8, max=64)])
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -22,9 +41,24 @@ def index():
 def login():
     return render_template('login.html')
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+
+
 @app.route('/signup')
 def signup():
     return render_template('signup.html', questions=questions)
+
+# @app.route('/signup', methods=['GET', 'POST'])
+# def signup():
+#     form = SignupForm(request.form)
+#     if request.method == 'POST' and form.validate():
+#         # user = User(form.username.data, form.email.data,
+#         #             form.password.data)
+#         # db_session.add(user)
+#         flash('Thanks for registering')
+#         return redirect(url_for('login'))
+#     return render_template('signup.html', form=form)
 
 @app.route('/dashboard')
 def dashboard():
