@@ -39,7 +39,7 @@
 
         <div class="form-group">
             <label for="exampleFormControlSelect1">What is your gender?</label>
-            <select class="form-control" id="gender">
+            <select class="form-control" id="gender" required>
               <option>-</option>
               <option>Male</option>
               <option>Female</option>
@@ -49,7 +49,7 @@
 
         <div class="form-group">
             <label for="exampleFormControlSelect1">Who are you looking to be matched with?</label>
-            <select class="form-control" id="genderPreference">
+            <select class="form-control" id="genderPreference" required>
               <option>-</option>
               <option>Male</option>
               <option>Female</option>
@@ -61,7 +61,7 @@
           {% for num,quest in q.items() %}
             <div class="form-group">
               <label for="exampleFormControlSelect1">{{quest}}</label>
-              <select class="form-control" id={{num}}>
+              <select class="form-control" id={{num}} required>
                 <option>-</option>
                 <option>1</option>
                 <option>2</option>
