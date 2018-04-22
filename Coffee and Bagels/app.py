@@ -1,6 +1,6 @@
 import sqlite3 as sql
 from flask import Flask, request, render_template
-from flask.ext.wtf import Form
+from flask_wtf import FlaskForm
 from wtforms import BooleanField, PasswordField, SubmitField, TextField
 from wtforms.validators import InputRequired, DataRequired, Email, EqualTo, Length
 from wtforms import ValidationError
@@ -18,12 +18,14 @@ questions = [{"1":"When I make a plan, I stick to it."},{"2":"I take time out of
 
 app = Flask(__name__)
 
-class LoginForm(Form):
+app.config['SECRET_KEY'] = 'SOMETHINGGOESHERE'
+
+class LoginForm(FlaskForm):
     user_email = TextField('Email', validators=[InputRequired(), Length(min=4, max=15)])
     user_pass = PasswordField('Password', validators=[InputRequired(), Length(min=4, max=80)])
 
-class SignupForm(Form):
-    first_name = TextField('First Name', validators=[InputRequired(), Length(min=4, max=15)])
+class SignupForm(FlaskForm):
+    first_name = TextField('First Name', validators=[InputRequired(), Length(min=4, max=15)], render_kw={"placeholder": "First Name"})
     last_name = TextField('Last Name', validators=[InputRequired(), Length(min=4, max=15)])
     user_email = TextField('Email', validators=[InputRequired(), Email(message='Invalid email'), Length(max=50)])
     user_pass = PasswordField('Password', validators=[InputRequired(), Length(min=4, max=15)])
@@ -48,8 +50,7 @@ def contact():
 @app.route('/signup')
 def signup():
     form = SignupForm()
-    
-    return render_template('signup.html', questions=questions)
+    return render_template('signup.html', questions=questions, signup_form=form)
 
 # @app.route('/signup', methods=['GET', 'POST'])
 # def signup():
