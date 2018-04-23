@@ -16,56 +16,60 @@
           <p><h1 id="heading">Sign Up</h1></p>
 
           <form method="post" action="{{url_for('signup')}}">
+            {{ form.csrf_token }}
+            {% for err in form.first_name.errors %}
+            <div class="flash text-center">{{err}}</div>
+            {% endfor %}
+            {% for err in form.last_name.errors %}
+            <div class="flash text-center">{{err}}</div>
+            {% endfor %}
+            {% for err in form.user_email.errors %}
+            <div class="flash text-center">{{err}}</div>
+            {% endfor %}
+            {% for err in form.user_pass.errors %}
+            <div class="flash text-center">{{err}}</div>
+            {% endfor %}
             <div class="form-group"> 
-                {{ signup_form.csrf_token }}
-                {{ signup_form.first_name.label }}
-                {{ signup_form.first_name(class="form-control")}}
+                {{ form.first_name.label }}
+                {{ form.first_name(class="form-control")}}
             </div>
             <div class="form-group">
-                {{ signup_form.csrf_token }}
-                {{ signup_form.last_name.label }}
-                {{ signup_form.last_name(class="form-control")}}
+                {{ form.last_name.label }}
+                {{ form.last_name(class="form-control")}}
             </div>
             <div class="form-group">
-              <label for="email">Email</label>
-              <input type="text" class="form-control" id="email" placeholder="Email">
+                {{ form.user_email.label }}
+                {{ form.user_email(class="form-control")}}
             </div>
             <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" class="form-control" id="password" placeholder="Password">
+                {{ form.user_pass.label }}
+                {{ form.user_pass(class="form-control")}}
             </div>
 
             <div class="form-group">
-                <label for="exampleFormControlSelect1">What is your gender?</label>
-                <select class="form-control" id="gender">
-                  <option>-</option>
-                  <option>Male</option>
-                  <option>Female</option>
-                  <option>Rather Not Say</option>
-                </select>
+                {{ form.user_gender.label }}
+                {{ form.user_gender(class="form-control")}}
             </div>
 
             <div class="form-group">
-                <label for="exampleFormControlSelect1">Who are you looking to be matched with?</label>
-                <select class="form-control" id="genderPreference">
-                  <option>-</option>
-                  <option>Male</option>
-                  <option>Female</option>
-                  <option>No Preference</option>
-                </select>
+                {{ form.user_want_gender.label }}
+                {{ form.user_want_gender(class="form-control")}}
+            </div>
+              <div class="form-group">
+                {{ form.take_coffee.label }}
+                {{ form.take_coffee(class="form-control")}}
             </div>
 
             <div class="form-group">
               <p align="center"><strong>For the following statements, give your rating on how much you agree with each.<br>1 = Strongly Disagree, 5 = Strongly Agree</strong></p>
             </div>
-            {% for q in questions %}
-            <!--Questionnaire-->
+            {% for q in Q %}
+            {{q.label}}
+            {{q(class="d-inline")}}
             {% endfor %}
-              
-            
             <button type="submit" class="btn btn-success btn-block">Submit</button>
 
-            <a href="index.html" class="btn btn-danger btn-block" role="button">Back</a>
+            <a href="{{url_for('index')}}" class="btn btn-danger btn-block" role="button">Back</a>
           </form>
         </div>
       </div>

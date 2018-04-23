@@ -1,7 +1,7 @@
 import sqlite3 as sql
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, flash
 from flask_wtf import FlaskForm
-from wtforms import BooleanField, PasswordField, SubmitField, TextField
+from wtforms import BooleanField, PasswordField, SubmitField, TextField, SelectField, RadioField
 from wtforms.validators import InputRequired, DataRequired, Email, EqualTo, Length
 from wtforms import ValidationError
 
@@ -21,23 +21,47 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'SOMETHINGGOESHERE'
 
 class LoginForm(FlaskForm):
-    user_email = TextField('Email', validators=[InputRequired(), Length(min=4, max=15)])
-    user_pass = PasswordField('Password', validators=[InputRequired(), Length(min=4, max=80)])
+    user_email = TextField('Email Address', validators=[InputRequired(), Length(min=4, max=15)], render_kw={"placeholder": "Email Address"})
+    user_pass = PasswordField('Password', validators=[InputRequired(), Length(min=4, max=80)], render_kw={"placeholder": "Password"})
 
 class SignupForm(FlaskForm):
-    first_name = TextField('First Name', validators=[InputRequired(), Length(min=4, max=15)], render_kw={"placeholder": "First Name"})
-    last_name = TextField('Last Name', validators=[InputRequired(), Length(min=4, max=15)])
-    user_email = TextField('Email', validators=[InputRequired(), Email(message='Invalid email'), Length(max=50)])
-    user_pass = PasswordField('Password', validators=[InputRequired(), Length(min=4, max=15)])
+    first_name = TextField('First Name', validators=[InputRequired(message='Enter a First Name!'), Length(min=4, max=15)], render_kw={"placeholder": "First Name"})
+    last_name = TextField('Last Name', validators=[InputRequired(message='Enter a Last Name!'), Length(min=4, max=15)], render_kw={"placeholder": "Last Name"})
+    user_email = TextField('Email', validators=[InputRequired(message="You must enter an email!"), Email(message='Invalid email'), Length(max=50)], render_kw={"placeholder": "Email"})
+    user_pass = PasswordField('Password', validators=[InputRequired(message='You must enter a password!'), Length(min=4, max=15)], render_kw={"placeholder": "Password"})
+    user_gender = SelectField('What is your gender?', choices=[('male', 'Male'), ('female', 'Female'), ('other', 'Other')])
+    user_want_gender = SelectField('Who are you looking to be matched with?', choices=[ ('female', 'Female'), ('male', 'Male'), ('no_preference', 'No preference')])
+    take_coffee = SelectField('How do you take your coffee?', choices=[('black', 'Black'), ('wcream', 'With Cream'), ('wmilk', 'With Milk')])
 
+class Questionnaire(FlaskForm):
+    L = [('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')]
+    q_one = RadioField(questions[0]['1'], choices=L)
+    q_two = RadioField(questions[1]['2'], choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
+    q_three = RadioField(questions[2]['3'], choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
+    q_four = RadioField(questions[3]['4'], choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
+    q_five = RadioField(questions[4]['5'], choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
+    q_six = RadioField(questions[5]['6'], choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
+    q_seven = RadioField(questions[6]['7'], choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
+    q_eight = RadioField(questions[7]['8'], choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
+    q_nine = RadioField(questions[8]['9'], choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
+    q_ten = RadioField(questions[9]['10'], choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
+    
+#class ContactForm(FlaskForm):
+#    name = 
+#    email = 
+#    subject = 
+#    message = 
+#    send = 
+    
 @app.route('/')
 def index():
     return render_template('index.html')
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
-    return render_template('login.html')
+    #if login information in database -> return 'dashboard'
+    return render_template('login.html', form=form)
 
 @app.route('/about')
 def about():
@@ -47,10 +71,16 @@ def about():
 def contact():
     return render_template('contact.html')
 
-@app.route('/signup')
+@app.route('/signup', methods=['GET', 'POST'])
 def signup():
     form = SignupForm()
-    return render_template('signup.html', questions=questions, signup_form=form)
+    Q = Questionnaire()
+    if form.validate_on_submit():
+        return form.first_name.data
+    #if user not yet in database -> register
+    
+    #else -> print error message
+    return render_template('signup.html', questions=questions, form=form, Q=Q)
 
 # @app.route('/signup', methods=['GET', 'POST'])
 # def signup():
