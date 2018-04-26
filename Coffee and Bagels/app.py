@@ -2,6 +2,7 @@ import sqlite3 as sql
 from flask import Flask, request, render_template, flash
 from flask_wtf import FlaskForm
 from wtforms import BooleanField, PasswordField, SubmitField, TextField, SelectField, RadioField
+from flask_mail import Mail, Message
 from wtforms.validators import InputRequired, DataRequired, Email, EqualTo, Length
 from wtforms import ValidationError
 
@@ -18,8 +19,31 @@ questions = [{"1":"When I make a plan, I stick to it."},{"2":"I take time out of
 
 app = Flask(__name__)
 
+
 app.config['SECRET_KEY'] = 'SOMETHINGGOESHERE'
 
+#Flask-Mail:
+#Configuring the email server and authentication for the contact page
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USERNAME'] = 'developmentConfig@gmail.com'
+app.config['MAIL_PASSWORD'] = '@config123456'
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+
+mail = Mail(app)
+
+sender = 'developmentConfig@gmail.com'
+
+ 
+def send_email(subject, sender, recipients, text_body):
+    with app.app_context():
+        msg = Message(subject, sender=sender, recipients=recipients)
+        msg.body = text_body
+        mail.send(msg)
+
+#send_email('hello', sender, ['dlaesker@mail.usf.edu'], 'hello')
+        
 class LoginForm(FlaskForm):
     user_email = TextField('Email Address', validators=[InputRequired(), Length(min=4, max=15)], render_kw={"placeholder": "Email Address"})
     user_pass = PasswordField('Password', validators=[InputRequired(), Length(min=4, max=80)], render_kw={"placeholder": "Password"})
@@ -36,22 +60,21 @@ class SignupForm(FlaskForm):
 class Questionnaire(FlaskForm):
     L = [('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')]
     q_one = RadioField(questions[0]['1'], choices=L)
-    q_two = RadioField(questions[1]['2'], choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
-    q_three = RadioField(questions[2]['3'], choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
-    q_four = RadioField(questions[3]['4'], choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
-    q_five = RadioField(questions[4]['5'], choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
-    q_six = RadioField(questions[5]['6'], choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
-    q_seven = RadioField(questions[6]['7'], choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
-    q_eight = RadioField(questions[7]['8'], choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
-    q_nine = RadioField(questions[8]['9'], choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
-    q_ten = RadioField(questions[9]['10'], choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
+    q_two = RadioField(questions[1]['2'], choices=L)
+    q_three = RadioField(questions[2]['3'], choices=L)
+    q_four = RadioField(questions[3]['4'], choices=L)
+    q_five = RadioField(questions[4]['5'], choices=L)
+    q_six = RadioField(questions[5]['6'], choices=L)
+    q_seven = RadioField(questions[6]['7'], choices=L)
+    q_eight = RadioField(questions[7]['8'], choices=L)
+    q_nine = RadioField(questions[8]['9'], choices=L)
+    q_ten = RadioField(questions[9]['10'], choices=L)
     
-#class ContactForm(FlaskForm):
-#    name = 
-#    email = 
-#    subject = 
-#    message = 
-#    send = 
+class ContactForm(FlaskForm):
+    name = TextField('Name', validators=[InputRequired(message='Name required!')],              render_kw={"placeholder": "Enter name"})
+    email = TextField('Email', validators=[InputRequired(message="You must enter an             email!"), Email(message='Invalid email'), Length(max=50)], render_kw=               {"placeholder": "Enter email"})
+    subject = SelectField('Subject', choices=[('gcs', 'General Customer Service'),                 ('sugest', 'Suggestions')])
+    message = TextField('Message', validators=[InputRequired(message=''), Length(min=4,           max=15)], render_kw={"placeholder": "Enter your message here"})
     
 @app.route('/')
 def index():
@@ -69,14 +92,23 @@ def about():
 
 @app.route('/contact')
 def contact():
-    return render_template('contact.html')
+    form = ContactForm()
+    return form.email.data
+    #send_email(form.subject.data, sender, , form.message.data)
+    return render_template('contact.html', contactform=form)
 
+#################
+#LOOK HERE RILEY#
+#################
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     form = SignupForm()
     Q = Questionnaire()
-    if form.validate_on_submit():
-        return form.first_name.data
+    #You can access the data by doing 'form.<member variable>.data'
+    #member variables: look in the SignupForm class
+    
+    #if form.validate_on_submit():
+    #    return form.first_name.data
     #if user not yet in database -> register
     
     #else -> print error message
