@@ -21,8 +21,8 @@
           <div class="row">
               <div class="col-md-8">
                   <div class="well well-sm">
-                    <form>
-                        {{contactform.csrf_token}}
+                    <form action="{{url_for('contact')}}" method="post">
+                    {{contactform.csrf_token}}
                       <div class="row">
                           <div class="col-md-6">
                               <div class="form-group" style="padding-top: 20px">
@@ -31,11 +31,7 @@
                               </div>
                               <div class="form-group">
                                 {{contactform.email.label}}
-                                <div class="input-group">
-                                  <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
-                                  </span>
-                                  {{contactform.email(class="form-control")}}
-                                </div>
+                                {{contactform.email(class="form-control")}}
                               </div>
                               <div class="form-group">
                                 {{contactform.subject.label}}
@@ -56,7 +52,7 @@
                     </form>
                   </div>
               </div>
-
+              
               <div class="col-md-4">
                 <form style="padding-top: 50px;">
                   <legend><span class="glyphicon glyphicon-globe"></span> Our office</legend>
@@ -74,7 +70,7 @@
                   </address>
                 </form>
               </div>
-
+            
           </div>
       </div>
     </div>

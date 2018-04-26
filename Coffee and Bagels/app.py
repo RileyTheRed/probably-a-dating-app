@@ -26,6 +26,7 @@ app.config['SECRET_KEY'] = 'SOMETHINGGOESHERE'
 #Configuring the email server and authentication for the contact page
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
+app.config['MAIL_DEBUG'] = True
 app.config['MAIL_USERNAME'] = 'developmentConfig@gmail.com'
 app.config['MAIL_PASSWORD'] = '@config123456'
 app.config['MAIL_USE_TLS'] = True
@@ -38,7 +39,7 @@ sender = 'developmentConfig@gmail.com'
  
 def send_email(subject, sender, recipients, text_body):
     with app.app_context():
-        msg = Message(subject, sender=sender, recipients=recipients)
+        msg = Message(subject, sender=sender, recipients=[recipients])
         msg.body = text_body
         mail.send(msg)
 
@@ -73,7 +74,7 @@ class Questionnaire(FlaskForm):
 class ContactForm(FlaskForm):
     name = TextField('Name', validators=[InputRequired(message='Name required!')],              render_kw={"placeholder": "Enter name"})
     email = TextField('Email', validators=[InputRequired(message="You must enter an             email!"), Email(message='Invalid email'), Length(max=50)], render_kw=               {"placeholder": "Enter email"})
-    subject = SelectField('Subject', choices=[('gcs', 'General Customer Service'),                 ('sugest', 'Suggestions')])
+    subject = SelectField('Subject', validators=[InputRequired(message="error")], choices=[('Coffee and Bagels', 'General Customer Service'),                 ('Coffee and Bagels', 'Suggestions')])
     message = TextField('Message', validators=[InputRequired(message=''), Length(min=4,           max=15)], render_kw={"placeholder": "Enter your message here"})
     
 @app.route('/')
@@ -90,12 +91,12 @@ def login():
 def about():
     return render_template('about.html')
 
-@app.route('/contact')
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
-    form = ContactForm()
-    return form.email.data
-    #send_email(form.subject.data, sender, , form.message.data)
-    return render_template('contact.html', contactform=form)
+    contactform = ContactForm()
+    if contactform.validate_on_submit():
+         send_email(contactform.subject.data, sender, contactform.email.data, contactform.message.data)
+    return render_template('contact.html', contactform=contactform)
 
 #################
 #LOOK HERE RILEY#
@@ -107,8 +108,8 @@ def signup():
     #You can access the data by doing 'form.<member variable>.data'
     #member variables: look in the SignupForm class
     
-    #if form.validate_on_submit():
-    #    return form.first_name.data
+    if form.validate_on_submit():
+        return form.first_name.data
     #if user not yet in database -> register
     
     #else -> print error message
