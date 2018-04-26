@@ -17,6 +17,7 @@
 
           <form method="post" action="{{url_for('signup')}}">
             {{ form.csrf_token }}
+            <!--To display an error if a required field was not entered-->
             {% for err in form.first_name.errors %}
             <div class="flash text-center">{{err}}</div>
             {% endfor %}
@@ -68,7 +69,6 @@
             {{q(class="d-inline")}}
             {% endfor %}
             <button type="submit" class="btn btn-success btn-block">Submit</button>
-
             <a href="{{url_for('index')}}" class="btn btn-danger btn-block" role="button">Back</a>
           </form>
         </div>
