@@ -60,16 +60,17 @@ class SignupForm(FlaskForm):
 
 class Questionnaire(FlaskForm):
     L = [('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')]
-    q_one = RadioField(questions[0]['1'], choices=L)
-    q_two = RadioField(questions[1]['2'], choices=L)
-    q_three = RadioField(questions[2]['3'], choices=L)
-    q_four = RadioField(questions[3]['4'], choices=L)
-    q_five = RadioField(questions[4]['5'], choices=L)
-    q_six = RadioField(questions[5]['6'], choices=L)
-    q_seven = RadioField(questions[6]['7'], choices=L)
-    q_eight = RadioField(questions[7]['8'], choices=L)
-    q_nine = RadioField(questions[8]['9'], choices=L)
-    q_ten = RadioField(questions[9]['10'], choices=L)
+    msg = 'All options must be selected!'
+    q_one = RadioField(questions[0]['1'], choices=L, validators=[InputRequired(message=msg)])
+    q_two = RadioField(questions[1]['2'], choices=L, validators=[InputRequired(message=msg)])
+    q_three = RadioField(questions[2]['3'], choices=L, validators=[InputRequired(message=msg)])
+    q_four = RadioField(questions[3]['4'], choices=L, validators=[InputRequired(message=msg)])
+    q_five = RadioField(questions[4]['5'], choices=L, validators=[InputRequired(message=msg)])
+    q_six = RadioField(questions[5]['6'], choices=L, validators=[InputRequired(message=msg)])
+    q_seven = RadioField(questions[6]['7'], choices=L, validators=[InputRequired(message=msg)])
+    q_eight = RadioField(questions[7]['8'], choices=L, validators=[InputRequired(message=msg)])
+    q_nine = RadioField(questions[8]['9'], choices=L, validators=[InputRequired(message=msg)])
+    q_ten = RadioField(questions[9]['10'], choices=L, validators=[InputRequired(message=msg)])
     
 class ContactForm(FlaskForm):
     name = TextField('Name', validators=[InputRequired(message='Name required!')],              render_kw={"placeholder": "Enter name"})
@@ -107,9 +108,11 @@ def signup():
     Q = Questionnaire()
     #You can access the data by doing 'form.<member variable>.data'
     #member variables: look in the SignupForm class
+    #return dashboard(L)
     
-    if form.validate_on_submit():
-        return form.first_name.data
+    if form.validate_on_submit() and Q.validate_on_submit():
+        #return form.first_name.data
+        return Q.q_one.data
     #if user not yet in database -> register
     
     #else -> print error message
@@ -127,7 +130,8 @@ def signup():
 #     return render_template('signup.html', form=form)
 
 @app.route('/dashboard')
-def dashboard():
+def dashboard(user_info, q_info = None):
+    
     return render_template('dashboard.html')
 
 if __name__ == "__main__":
