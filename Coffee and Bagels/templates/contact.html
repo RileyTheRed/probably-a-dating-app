@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+{% block head %}
+<title>About</title>
+<link rel="stylesheet" href="{{url_for('static', filename='css/contact.css')}}">
+{% endblock %}
+{% block content %}
+<!-- First Container -->
+  <div class="container-fluid bg text-center">
+    <div class="row">
+      <div class="jumbotron jumbotron-sm">
+          <div class="container">
+              <div class="row">
+                  <div class="col-sm-12 col-lg-12">
+                      <h1 class="h1">
+                          Contact us</h1>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="container">
+          <div class="row">
+              <div class="col-md-8">
+                  <div class="well well-sm">
+                    <form>
+                        {{contactform.csrf_token}}
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="form-group" style="padding-top: 20px">
+                                {{contactform.name.label}}
+                                {{contactform.name(class="form-control")}}
+                              </div>
+                              <div class="form-group">
+                                {{contactform.email.label}}
+                                <div class="input-group">
+                                  <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
+                                  </span>
+                                  {{contactform.email(class="form-control")}}
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                {{contactform.subject.label}}
+                                {{contactform.subject(class="form-control")}}
+                              </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group" style="padding-top: 20px;">
+                                {{contactform.message.label}}
+                                {{contactform.message(class="form-control")}}
+                            </div>
+                          </div>
+                          <div class="col-md-12" style="padding-bottom: 10px">
+                              <button type="submit" class="btn btn-primary btn-block" id="btnContactUs">
+                                  Send Message</button>
+                          </div>
+                      </div>
+                    </form>
+                  </div>
+              </div>
+
+              <div class="col-md-4">
+                <form style="padding-top: 50px;">
+                  <legend><span class="glyphicon glyphicon-globe"></span> Our office</legend>
+                  <address>
+                      <strong>University of South Florida</strong><br>
+                      4202 E. Fowler Avenue<br>
+                      Tampa, FL 33620<br>
+                      <abbr title="Phone">
+                          P:</abbr>
+                      (123) 456-7890
+                  </address>
+                  <address>
+                      <strong>Coffee and Bagels</strong><br>
+                      <a href="mailto:coffeeandbagels@gmail.com">coffeeandbagels@gmail.com</a>
+                  </address>
+                </form>
+              </div>
+
+          </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

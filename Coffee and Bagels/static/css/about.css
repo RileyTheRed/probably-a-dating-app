@@ -1,0 +1,76 @@
+body,
+html {
+    width: 100%;
+    height: 100%;
+    font-family: "Lato";
+}
+
+p {
+  font-size: 16px;
+}
+
+.margin {
+  margin-bottom: 45px;
+  font-size: 3em;
+}
+
+hr {
+    width: 400px;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.bg-1 { 
+    background-image: url(https://images.unsplash.com/photo-1429681601148-75510b2cef43?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9505cdf4eaedc1e8004cc8fef8c69566&auto=format&fit=crop&w=1650&q=80);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    padding: 0 40px;
+}
+
+.bg-2 { 
+    background-color: #d4e2f1;
+    background-size: cover;
+    color: black;
+    padding: 0 100px;
+}
+
+.bg-3 { 
+    background-color: #2b1d0e;
+    color: white;
+    padding: 0 40px;
+}
+
+.container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.content{
+  padding-top: 20%;
+  text-align: center;
+  text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+                 0px 8px 13px rgba(0,0,0,0.1),
+                 0px 18px 23px rgba(0,0,0,0.1);
+  color: white;
+}
+
+#splhead{
+  font-weight: 700;
+  font-size: 5em;
+}
+
+.navbar{
+    background-color: #2b1d0e;
+    color: white;
+}
+
+.avatar{
+  width: 100%;
+}
+
+#cards{
+  padding-bottom: 30px;
+}
