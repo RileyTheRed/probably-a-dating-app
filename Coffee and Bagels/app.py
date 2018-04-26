@@ -1,3 +1,4 @@
+import os
 import sqlite3 as sql
 from flask import Flask, request, render_template, flash
 from flask_wtf import FlaskForm
@@ -16,6 +17,8 @@ questions = [{"1":"When I make a plan, I stick to it."},{"2":"I take time out of
     {"16":"Reliability is an honorable trait in a person."},{"17":"I am patient about things out of my control."},
     {"18":"Sexual chemistry is very important in a relationship."},{"19":"If you are in a relationship it is still okay to flirt with other people."},
     {"20":"I believe in true love."}]
+
+email = "test@gmail.com"
 
 app = Flask(__name__)
 
@@ -127,7 +130,7 @@ def signup():
 
 @app.route('/dashboard')
 def dashboard():
-    return render_template('dashboard.html')
+    return render_template('dashboard.html', user_email=email)
 
 if __name__ == "__main__":
     app.run(debug=True)
