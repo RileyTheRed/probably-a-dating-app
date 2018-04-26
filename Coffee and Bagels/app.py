@@ -127,8 +127,42 @@ def signup():
     #return dashboard(L)
     
     if form.validate_on_submit() and Q.validate_on_submit():
-        if f.validate_user(form.user_email.data,form.user_pass.data) == 2:
-            return render_template('dashboard.html')
+
+        L = []
+        L.append(form.first_name.data)
+        L.append(form.last_name.data)
+        L.append(form.user_email.data)
+        L.append(form.user_pass.data)
+        L.append(form.user_gender.data)
+        L.append(form.user_want_gender.data)
+        L.append(Q.q_one.data)
+        L.append(Q.q_two.data)
+        L.append(Q.q_three.data)
+        L.append(Q.q_four.data)
+        L.append(Q.q_five.data)
+        L.append(Q.q_six.data)
+        L.append(Q.q_seven.data)
+        L.append(Q.q_eight.data)
+        L.append(Q.q_nine.data)
+        L.append(Q.q_ten.data)
+        L.append(Q.q_eleven.data)
+        L.append(Q.q_twelve.data)
+        L.append(Q.q_thirteen.data)
+        L.append(Q.q_fourteen.data)
+        L.append(Q.q_fifteen.data)
+        L.append(Q.q_sixteen.data)
+        L.append(Q.q_seventeen.data)
+        L.append(Q.q_eighteen.data)
+        L.append(Q.q_nineteen.data)
+        L.append(Q.q_twenty.data)
+
+        if f.validate_registration(L) == 1:
+            f.validate_registration(L)
+            flash("Registration Success!")
+            return redirect(url_for('login'))
+        else:
+            flash("Email is already in use!")
+
     #if user not yet in database -> register
     
     #else -> print error message
@@ -149,6 +183,11 @@ def signup():
 def dashboard(user_info = None, q_info = None):
     
     return render_template('dashboard.html')
+
+
+@app.route('/profile')
+def profile():
+    return render_template('profile.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -3,7 +3,7 @@ import sqlite3 as sql
 #defintion of the function that gets and returns the path that leads to the users profile picture
 def get_pic_path(email):
 
-    con = sql.connect("../dating.db", timeout=10)
+    con = sql.connect("dating.db", timeout=10)
     cursor = con.cursor()
 
     try:
@@ -20,7 +20,7 @@ def get_pic_path(email):
 #defintion of the function that gets and returns the users questionnaire information
 def get_user_question_information(email):
 
-    con = sql.connect("../dating.db", timeout=10)
+    con = sql.connect("dating.db", timeout=10)
     cursor = con.cursor()
 
     try:
@@ -65,23 +65,28 @@ def validate_registration(user_info):
     for x in user_info[6:]:
         temp_quest.append(x)
 
-    con = sql.connect("../dating.db", timeout=10)
+    con = sql.connect("dating.db", timeout=10)
     cur1 = con.cursor()
-    cur1.execute("select * from users where uemail = ?", (temp_quest[0],))
 
-    if not cur1.rowcount:
+    try:
 
-        cur1.execute("insert into users(uemail,ufname,ulname,ugender,upass) values (?,?,?,?,?)", (x for x in temp_user))
-        con.commit()
+        if validate_user(temp_user[0],"") == 0:
+
+            cur1.execute("insert into users(uemail,ufname,ulname,ugender,upass) values (?,?,?,?,?)", (temp_user[0],temp_user[1],temp_user[2], temp_user[3],temp_user[4]))
+            
+            cur1.execute("insert into questionnaire(qemail,qgenderpreference,q1,q2,q3,q4,q5,q6,q7,q8,q9,q10,q11,q12,q13,q14,q15,q16,q17,q18,q19,q20) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", (temp_quest[0],temp_quest[1],temp_quest[2],temp_quest[3],temp_quest[4],temp_quest[5],temp_quest[6],temp_quest[7],temp_quest[8],temp_quest[9],temp_quest[10],temp_quest[11],temp_quest[12],temp_quest[13],temp_quest[14],temp_quest[15],temp_quest[16],temp_quest[17],temp_quest[18],temp_quest[19],temp_quest[20],temp_quest[21]))
+            con.commit()
+
+            return 1
         
-        cur1.execute("insert into questionnaire(qemail,qgenderpreference,q1,q2,q3,q4,q5,q6,q7,q8,q9,q10,q11,q12,q13,q14,q15,q16,q17,q18,q19,q20) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", (x for x in temp_quest))
-        con.commit()
+        else:
 
-        return 1
-    
-    else:
+            return 0
 
-        return 0
+    except Exception as e:
+
+        raise e
+
 
 
 
