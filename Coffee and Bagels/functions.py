@@ -37,16 +37,17 @@ def get_user_question_information(email):
 #defintion of the user login verification
 def validate_user(given_email, given_pass):
 
-    con = sql.connect("../dating.db", timeout=10)
+    con = sql.connect("dating.db", timeout=10)
     cursor = con.cursor()
 
     try:
 
         cursor.execute("select upass from users where uemail = ?", (given_email,))
-        if not cursor.rowcount:
+        rows = cursor.fetchone()
+        if not rows:
             return 0
         else:
-            if not given_pass == cursor.fetchone()[0]:
+            if not given_pass == rows[0]:
                 return 1
             else:
                 return 2
@@ -84,7 +85,6 @@ def validate_registration(user_info):
 
 
 
-# if __name__ == "__main__":
+if __name__ == "__main__":
 
-#     test = [1,2,3,4,5,6,7,8,9,10]
-#     print(validate_registration(test))
+    print(validate_user("bstarkey5e@dyndns.org","a5zNfx"))

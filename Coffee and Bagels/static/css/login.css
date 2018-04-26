@@ -19,6 +19,10 @@ h1 {
 	padding-bottom: 20px;
 }
 
+#form{
+	background-color: #2b1d0e; 
+}
+
 .form-container{
 	border: 0px solid #fff;
 	padding: 60px 80px;
