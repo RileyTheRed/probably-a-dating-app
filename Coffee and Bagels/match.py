@@ -115,11 +115,7 @@ def get_possible_matches(user_email):
             info_dict["First Name: "] = each_info[0]
             info_dict["Last Name: "] = each_info[1]
             info_dict["Gender: "] = each_info[2]
-<<<<<<< HEAD
-            info_dict["Compatability: "] = row[1]
-=======
             info_dict["Compatability: "] = "%"+str(row[1])
->>>>>>> learning_to_tie_my_shoes
             info_dict["Email: "] = row[2]
 
             final.append(info_dict)
@@ -129,22 +125,12 @@ def get_possible_matches(user_email):
     except Exception as e:
 
         raise e
-<<<<<<< HEAD
-    except ZeroDivisionError as d:
-    	print(d)
-
-=======
->>>>>>> learning_to_tie_my_shoes
 
 
 if __name__ == "__main__":
 
 
-<<<<<<< HEAD
-    for row in get_matches('r.wells6894@gmail.com'):
-=======
     for row in get_possible_matches('r.wells6894@gmail.com'):
->>>>>>> learning_to_tie_my_shoes
         print(row)
 #     test_subject = "adebiasi4o@exblog.jp"
 #     qrange = min_max(test_subject)
