@@ -16,7 +16,7 @@ p {
 
 hr {
     width: 400px;
-    border-top: 1px solid #f8f8f8;
+    border-top: 1px solid #faf0be;
     border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 
@@ -31,7 +31,7 @@ hr {
 }
 
 .bg-2 { 
-    background-color: #d4e2f1;
+    background-color: #faf0be;
     background-size: cover;
     color: black;
     padding: 0 100px;
