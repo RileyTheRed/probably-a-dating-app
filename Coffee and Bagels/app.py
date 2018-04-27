@@ -183,7 +183,7 @@ def signup():
 @app.route('/dashboard')
 def dashboard(user_info = None, comp = None, mutual_likes = None):
     
-    return render_template('dashboard.html', user=user_info, comp = comp, mutual_likes = mutual_likes)
+    return render_template('dashboard.html', user=user_info, comp = comp, mutual_likes=mutual_likes)
 
 
 @app.route('/profile')
