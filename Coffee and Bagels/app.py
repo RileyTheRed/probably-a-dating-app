@@ -1,7 +1,7 @@
 import sqlite3 as sql
 from flask import Flask, request, render_template, flash
 from flask_wtf import FlaskForm
-from wtforms import BooleanField, PasswordField, SubmitField, TextField, SelectField, RadioField
+from wtforms import BooleanField, PasswordField, SubmitField, TextField, SelectField, RadioField, HiddenField
 from flask_mail import Mail, Message
 from wtforms.validators import InputRequired, DataRequired, Email, EqualTo, Length
 from wtforms import ValidationError
@@ -19,11 +19,10 @@ questions = [{"1":"When I make a plan, I stick to it."},{"2":"I take time out of
 
 app = Flask(__name__)
 
-
 app.config['SECRET_KEY'] = 'SOMETHINGGOESHERE'
 
 #Flask-Mail:
-#Configuring the email server and authentication for the contact page
+#Configuring the email server and authentication for the contact form
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_DEBUG'] = True
@@ -35,7 +34,6 @@ app.config['MAIL_USE_SSL'] = False
 mail = Mail(app)
 
 sender = 'developmentConfig@gmail.com'
-
  
 def send_email(subject, sender, recipients, text_body):
     with app.app_context():
@@ -75,7 +73,7 @@ class Questionnaire(FlaskForm):
 class ContactForm(FlaskForm):
     name = TextField('Name', validators=[InputRequired(message='Name required!')],              render_kw={"placeholder": "Enter name"})
     email = TextField('Email', validators=[InputRequired(message="You must enter an             email!"), Email(message='Invalid email'), Length(max=50)], render_kw=               {"placeholder": "Enter email"})
-    subject = SelectField('Subject', validators=[InputRequired(message="error")], choices=[('Coffee and Bagels', 'General Customer Service'),                 ('Coffee and Bagels', 'Suggestions')])
+    subject = SelectField('Subject', validators=[InputRequired(message="error")], choices=[('General Customer Service', 'General Customer Service'),                 ('Suggestions', 'Suggestions')])
     message = TextField('Message', validators=[InputRequired(message=''), Length(min=4,           max=15)], render_kw={"placeholder": "Enter your message here"})
     
 @app.route('/')
@@ -86,6 +84,8 @@ def index():
 def login():
     form = LoginForm()
     #if login information in database -> return 'dashboard'
+    if form.validate_on_submit():
+        return form.user_email.data
     return render_template('login.html', form=form)
 
 @app.route('/about')
@@ -96,8 +96,11 @@ def about():
 def contact():
     contactform = ContactForm()
     if contactform.validate_on_submit():
-         send_email(contactform.subject.data, sender, contactform.email.data, contactform.message.data)
+        send_email('Coffee and Bagels', sender, contactform.email.data, 'We received your email!')
+        send_email(contactform.subject.data, sender, sender, contactform.message.data)
     return render_template('contact.html', contactform=contactform)
+
+
 
 #################
 #LOOK HERE RILEY#
@@ -130,9 +133,13 @@ def signup():
 #     return render_template('signup.html', form=form)
 
 @app.route('/dashboard')
-def dashboard(user_info, q_info = None):
+def dashboard(user_name=None, comp=None, mutual_likes=None):
     
     return render_template('dashboard.html')
+
+@app.route('/profile')
+def profile(user_info=None):
+    return render_template('profile.html', user_info=user_info)
 
 if __name__ == "__main__":
     app.run(debug=True)
