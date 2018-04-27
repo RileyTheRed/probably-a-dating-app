@@ -1,5 +1,6 @@
 import sqlite3 as sql
 import functions as f
+import match as m
 from flask import Flask, request, render_template, flash, redirect, url_for
 from flask_wtf import FlaskForm
 from wtforms import BooleanField, PasswordField, SubmitField, TextField, SelectField, RadioField
@@ -99,7 +100,7 @@ def login():
     if form.validate_on_submit():
         # return str(f.validate_user(form.user_email.data,form.user_pass.data))
         if f.validate_user(form.user_email.data,form.user_pass.data) == 2:
-            return redirect(url_for('dashboard'))
+            return dashboard(form.user_email.data, m.get_possible_matches(form.user_email.data), [])
         # return form.user_email.data
     #if login information in database -> return 'dashboard'
     return render_template('login.html', form=form)
@@ -180,9 +181,9 @@ def signup():
 #     return render_template('signup.html', form=form)
 
 @app.route('/dashboard')
-def dashboard(user_info = None, q_info = None):
+def dashboard(user_info = None, comp = None, mutual_likes = None):
     
-    return render_template('dashboard.html')
+    return render_template('dashboard.html', user=user_info, comp = comp, mutual_likes = mutual_likes)
 
 
 @app.route('/profile')
