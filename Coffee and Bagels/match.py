@@ -50,7 +50,16 @@ def compatability(n):
 
 #adjusted compatability
 def adjusted_compatability(n,com_range):
-    return float("{0:.2f}".format((((n-com_range[0])*100) / (com_range[1] - com_range[0]))))
+
+    try:
+        temp = float("{0:.2f}".format((((n-com_range[0])*100) / (com_range[1] - com_range[0]))))
+        return temp
+
+    except ZeroDivisionError as e:
+        print(com_range[1])
+        print(com_range[0])
+        print(com_range[1] - com_range[0])
+        raise e
 
 
 #main return function
