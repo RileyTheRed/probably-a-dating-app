@@ -6,6 +6,7 @@ from flask_mail import Mail, Message
 from wtforms.validators import InputRequired, DataRequired, Email, EqualTo, Length
 from wtforms import ValidationError
 
+
 questions = [{"1":"When I make a plan, I stick to it."},{"2":"I take time out of my day for others."},
     {"3":"I feel unable to deal with things."},{"4":"I love to help others."},{"5":"I seek adventure."},
     {"6":"The first place I put my dirty clothes is in the hamper."},{"7":"I often carry the conversation to a higher level."},
@@ -134,7 +135,6 @@ def signup():
 
 @app.route('/dashboard')
 def dashboard(user_name=None, comp=None, mutual_likes=None):
-    
     return render_template('dashboard.html')
 
 @app.route('/profile')
