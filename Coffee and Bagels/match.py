@@ -9,7 +9,7 @@ import sqlite3 as sql
 def min_max(person):
     compat_range = [100.0,0.0]
     try:
-        con = sql.connect("../dating.db", timeout=10)
+        con = sql.connect("dating.db", timeout=10)
         cur1 = con.cursor()
         cur2 = con.cursor()
 
@@ -50,7 +50,7 @@ def compatability(n):
 
 #adjusted compatability
 def adjusted_compatability(n,com_range):
-    return (((n-com_range[0])*100) / (com_range[1] - com_range[0]))
+    return float("{0:.2f}".format((((n-com_range[0])*100) / (com_range[1] - com_range[0]))))
 
 
 #main return function
@@ -61,7 +61,7 @@ def get_matches(person):
 
     try:
         
-        con = sql.connect("../dating.db", timeout=10)
+        con = sql.connect("dating.db", timeout=10)
         cur1 = con.cursor()
         cur2 = con.cursor()
 
@@ -79,22 +79,58 @@ def get_matches(person):
                     cur2.execute("select * from questionnaire where qemail=?",(row1[0],))
                     for row2 in cur2:
                         if row2[1] == person1[0][3]:
+                            if adjusted_compatability(compatability(compare(person1[1][2:],row2[2:])),qrange) < 45.00:
+                                continue
                             matches.append([person,adjusted_compatability(compatability(compare(person1[1][2:],row2[2:])),qrange),row1[0]])
                             # print("{0} {1} is %{2:.2f} compatible with {3} {4}".format(person1[0][1],person1[0][2],adjusted_compatability(compatability(compare(person1[1][2:],row2[2:])),qrange),row1[1],row1[2]))
 
         cur1.close()
         cur2.close()
         con.close()
+        matches.sort(key=getkey, reverse=True)
         return matches
 
     except Exception as e:
+        raise e
+
+def getkey(item):
+    return item[1]
+
+
+
+def get_possible_matches(user_email):
+
+    con = sql.connect("dating.db", timeout=10)
+    cur1 = con.cursor()
+
+    try:
+
+        L = get_matches(user_email)
+        final = []
+        for row in L:
+            each_info = cur1.execute("select ufname, ulname, ugender from users where uemail = ?",(row[2],)).fetchone()
+
+            info_dict = {}
+
+            info_dict["fname"] = each_info[0]
+            info_dict["lname"] = each_info[1]
+            info_dict["gender"] = each_info[2]
+            info_dict["compat"] = row[1]
+            info_dict["email"] = row[2]
+
+            final.append(info_dict)
+
+        return final
+
+    except Exception as e:
+
         raise e
 
 
 if __name__ == "__main__":
 
 
-    for row in get_matches('adebiasi4o@exblog.jp'):
+    for row in get_possible_matches('r.wells6894@gmail.com'):
         print(row)
 #     test_subject = "adebiasi4o@exblog.jp"
 #     qrange = min_max(test_subject)

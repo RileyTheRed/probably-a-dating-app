@@ -88,8 +88,36 @@ def validate_registration(user_info):
         raise e
 
 
+#definition of get_user_info
+def get_user_info(user_email):
+
+    con = sql.connect('dating.db', timeout=10)
+    cur1 = con.cursor()
+
+    try:
+
+        L = {}
+        cur1.execute("select ufname, ulname, ugender from users where uemail = ?",(user_email,))
+        row = cur1.fetchone()
+        L["fname"] = row[0]
+        L["lname"] = row[1]
+        L["gender"] = row[2]
+
+        cur1.execute("select qgenderpreference from questionnaire where qemail = ?",(user_email,))
+        row = cur1.fetchone()
+        L["preference"] = row[0]
+
+        cur1.close()
+
+        return L
+
+    except Exception as e:
+
+        raise e
 
 
 if __name__ == "__main__":
 
-    print(validate_user("bstarkey5e@dyndns.org","a5zNfx"))
+    print(get_user_info("r.wells6894@gmail.com"))
+
+    # print(validate_user("bstarkey5e@dyndns.org","a5zNfx"))

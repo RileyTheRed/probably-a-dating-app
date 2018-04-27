@@ -55,8 +55,8 @@ class SignupForm(FlaskForm):
     last_name = TextField('Last Name', validators=[InputRequired(message='Enter a Last Name!'), Length(min=4, max=15)], render_kw={"placeholder": "Last Name"})
     user_email = TextField('Email', validators=[InputRequired(message="You must enter an email!"), Email(message='Invalid email'), Length(max=50)], render_kw={"placeholder": "Email"})
     user_pass = PasswordField('Password', validators=[InputRequired(message='You must enter a password!'), Length(min=4, max=15)], render_kw={"placeholder": "Password"})
-    user_gender = SelectField('What is your gender?', choices=[('male', 'Male'), ('female', 'Female'), ('other', 'Other')])
-    user_want_gender = SelectField('Who are you looking to be matched with?', choices=[ ('female', 'Female'), ('male', 'Male'), ('no_preference', 'No preference')])
+    user_gender = SelectField('What is your gender?', choices=[('Male', 'Male'), ('Female', 'Female'), ('Other', 'Other')])
+    user_want_gender = SelectField('Who are you looking to be matched with?', choices=[ ('Female', 'Female'), ('Male', 'Male'), ('no_preference', 'No preference')])
     take_coffee = SelectField('How do you take your coffee?', choices=[('black', 'Black'), ('wcream', 'With Cream'), ('wmilk', 'With Milk')])
 
 class Questionnaire(FlaskForm):
