@@ -26,7 +26,7 @@
           <div class="row" id="user-profile">
             <div class="col-md-12 col-xs-12" id="userinfo">
 
-              <img alt="User Profile Picture" src="{{url_for('static', filename='img/panda.png')}}" class="center-block avatar img-thumbnail" />
+              <img alt="User Profile Picture" src="{{url_for('static', filename='img/coffee.png')}}" class="center-block avatar img-thumbnail" />
 
               <h3 class="text-center">{{user}}</h3>
 
@@ -115,7 +115,7 @@
                     <!-- photo of person -->
                     {% for dict in mutual_likes %}
                     <div class="col-md-3 col-xs-3">
-                      <img src="{{url_for('static', filename='img/panda.png')}}" class="thumbnails center-block"/>
+                      <img src="{{url_for('static', filename='img/coffee.png')}}" class="thumbnails center-block"/>
                     </div>
 
                     <!-- name of person -->
@@ -156,7 +156,7 @@
                     <!-- user profile picture -->
                     
                     <div class="col-md-3 col-xs-3">
-                      <img alt="User Profile Picture" src="img/profile.jpg" class="center-block avatar" />
+                      <img alt="User Profile Picture" src="{{ url_for('static', filename='img/coffee.png') }}" class="center-block avatar" />
                     </div>
 
                     <!-- name & view profile button -->

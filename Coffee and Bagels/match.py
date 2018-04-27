@@ -112,11 +112,11 @@ def get_possible_matches(user_email):
 
             info_dict = {}
 
-            info_dict["fname"] = each_info[0]
-            info_dict["lname"] = each_info[1]
-            info_dict["gender"] = each_info[2]
-            info_dict["compat"] = row[1]
-            info_dict["email"] = row[2]
+            info_dict["First Name: "] = each_info[0]
+            info_dict["Last Name: "] = each_info[1]
+            info_dict["Gender: "] = each_info[2]
+            info_dict["Compatability: "] = "%"+str(row[1])
+            info_dict["Email: "] = row[2]
 
             final.append(info_dict)
 
