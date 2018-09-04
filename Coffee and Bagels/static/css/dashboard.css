@@ -23,7 +23,8 @@ html {
     margin-left: 50px;
     margin-right: 50px;
     margin-bottom: 80px;
-    background-color: #0e2b2b;
+    background-color: #2b1d0e;
+    opacity: 0.975;
 }
 
 #persons{
@@ -37,12 +38,12 @@ html {
 
 #user-profile{
     padding: 20px 20px;
-    color: white;
+    color: black;
 }
 
 #mutual-likes{
     padding: 20px 20px;
-    background-color: white;
+    background-color: #faf0be;
     color: black;
 }
 
@@ -59,13 +60,26 @@ html {
 }
 
 #colorscheme1{
-    background-color: #2b1d0e;
+    background-color: #faf0be;
+    /* background-color: #d4e2f1; */
+    opacity: 0.975;
 }
 
 #colorscheme2{
-    background-color: #d4e2f1;
+    background-color: #faf0be;
+    opacity: 0.975;
     color: black;
 }
+
+#modal-469485{
+    color: black;
+}
+
+/* #cperson{
+    border: #2b1d0e;
+    border-block-start: #2b1d0e;
+    border-block-end: #2b1d0e;
+} */
 
 /*#mutual-likes{
     overflow: scroll;
@@ -131,6 +145,7 @@ html {
     margin-left: auto;
     margin-top: 20px;
     margin-bottom: 20px;
+    border: #2b1d0e;
 }
 
 .avatar {
@@ -141,7 +156,7 @@ html {
 }
 
 .jumbotron{
-    background-color: #d4e2f1;
+    background-color: #faf0be;
     color: black;
 }
 
