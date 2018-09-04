@@ -5,236 +5,237 @@
 {% endblock %}
 {% block content %}
 <div class="container-fluid bg">
-      <div class="row " id="content">
-        <div class="col-md-12">
+  <div class="row " id="content">
+    <div class="col-md-12">
 
-          <div class="jumbotron">
-            <h2>
-              Hello, &lt;add user name&gt;!
-            </h2>
-            <p>
-              Welcome to Coffee and Bagels - the online web app to meet new people and make new connections. This is your dashboard. Use it to connect with other people, view other profiles and like them.
-            </p>
-          </div>
-
-          <div class="row match-my-cols row-eq-height">
-
-            <!-- column 1 -->
-            <div class="col-md-4 col-xs-12" id="colorscheme1">
-
-              <!-- user profile -->
-              <div class="row" id="user-profile">
-                <div class="col-md-12 col-xs-12" id="userinfo">
-                  
-                  <img alt="User Profile Picture" src="img/profile.jpg" class="center-block avatar img-thumbnail" />
-                  
-                  <h3 class="text-center">Blanche Pinto</h3>
-
-                  <p class="center-block" id="user_id">{{ user_email }}</p>
-                  
-                  <button class="btn btn-default center-block"><a id="modal-469485" href="#modal-container-469485" role="button" class="btn" data-toggle="modal">Edit User Profile</a></button>
-                  
-                  <div class="modal fade" id="modal-container-469485" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                           
-                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                            ×
-                          </button>
-                          <h4 class="modal-title" id="myModalLabel">
-                            Edit Account Information
-                          </h4>
-                        </div>
-                        
-                        <div class="modal-body">
-                          <form>
-                            <div class="form-group">
-                              <label for="firstName">First Name</label>
-                              <input type="text" class="form-control" id="firstName" placeholder="First Name">
-                            </div>
-                            <div class="form-group">
-                              <label for="lastName">Last Name</label>
-                              <input type="text" class="form-control" id="lastName" placeholder="Last Name">
-                            </div>
-                            <div class="form-group">
-                              <label for="email">Email</label>
-                              <input type="text" class="form-control" id="email" placeholder="Email" required>
-                            </div>
-                            <div class="form-group">
-                              <label for="password">Password</label>
-                              <input type="password" class="form-control" id="password" placeholder="Password" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">What is your gender?</label>
-                                <select class="form-control" id="gender">
-                                  <option>-</option>
-                                  <option>Male</option>
-                                  <option>Female</option>
-                                  <option>Rather Not Say</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">Who are you looking to be matched with?</label>
-                                <select class="form-control" id="genderPreference">
-                                  <option>-</option>
-                                  <option>Male</option>
-                                  <option>Female</option>
-                                  <option>No Preference</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                              <p align="center"><strong>For the following statements, give your rating on how much you agree with each.<br>1 = Strongly Disagree, 5 = Strongly Agree</strong></p>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                           
-                          <button type="button" class="btn btn-default" data-dismiss="modal">
-                            Close
-                          </button> 
-                          <button type="button" class="btn btn-primary">
-                            Save changes
-                          </button>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div> 
-                </div>
-              </div>
-
-              <!-- mutual likes -->
-              <div class="row" id="mutual-likes">
-                <div class="col-md-12 col-xs-12">
-                  <h3 class="text-center" id="headings">Mutual Likes</h3>
-
-                  <!-- person #1 -->
-                  <div class="row" id="persons">
-                    <div class="col-md-12 col-xs-12"> 
-                      <div class="row">
-                        <!-- photo of person -->
-                        <div class="col-md-3 col-xs-3">
-                          <img src="img/profile.jpg" class="thumbnails center-block" />
-                        </div>
-                        
-                        <!-- name of person -->
-                        <div class="col-md-5 col-xs-5">
-                          <h3 class="center-block text-center" >Blanche Pinto</h3>
-                        </div>
-
-                        <!-- contact button -->
-                        <div class="col-md-4 col-xs-4 center-block text-center">
-                          <button class="btn btn-success btn-sm"><a href="#">Contact</a></button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- person #2 -->
-                  <div class="row" id="persons">
-                    <div class="col-md-12 col-xs-12"> 
-                      <div class="row">
-                        <!-- photo of person -->
-                        <div class="col-md-3 col-xs-3">
-                          <img src="img/profile.jpg" class="thumbnails center-block" />
-                        </div>
-                        
-                        <!-- name of person -->
-                        <div class="col-md-5 col-xs-5">
-                          <h3 class="center-block text-center">Blanche Pinto</h3>
-                        </div>
-
-                        <!-- contact button -->
-                        <div class="col-md-4 col-xs-4 center-block text-center">
-                          <button class="btn btn-success btn-sm"><a href="#">Contact</a></button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-
-                  
-
-                </div>
-              </div>
-            </div>
-
-            <!-- column 2 -->
-            <div class="col-md-8 col-xs-12 column2" id="colorscheme2">
-              <div class="row">
-                <div class="col-md-12 col-xs-12">
-                  
-                  <h2 class="text-center" id="headings1">Compatability</h2>
-
-                  <!-- person 1 -->
-                  <div class="row" id="cperson">
-                    <div class="col-md-12 col-xs-12">
-                      <div class="row">
-
-                        <!-- user profile picture -->
-                        <div class="col-md-3 col-xs-3">
-                          <img alt="User Profile Picture" src="img/profile.jpg" class="center-block avatar" />
-                        </div>
-
-                        <!-- name & view profile button -->
-                        <div class="col-md-6 col-xs-6" style="padding-left: 50px; padding-top: 30px">
-                          <h3 class="text-center">
-                            Blanche Pinto
-                          </h3> 
-                          <button type="button" class="btn btn-success btn-block text-center">
-                            View Profile
-                          </button>
-                        </div>
-
-                        <!-- compatability percentage -->
-                        <div class="col-md-3 col-xs-3" id="button1" style="padding-top: 20px">
-                          <!-- <a href="#" class="btn btn-default btn-lg disabled" type="button" id="buttons">55%</a> -->
-                          <span class="label label-info">55%</span>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- person 2 -->
-                  <div class="row" id="cperson">
-                    <div class="col-md-12 col-xs-12">
-                      <div class="row">
-
-                        <!-- user profile picture -->
-                        <div class="col-md-3 col-xs-3">
-                          <img alt="User Profile Picture" src="img/profile.jpg" class="center-block avatar" />
-                        </div>
-
-                        <!-- name & view profile button -->
-                        <div class="col-md-6 col-xs-6" style="padding-left: 50px; padding-top: 30px">
-                          <h3 class="text-center">
-                            Blanche Pinto
-                          </h3> 
-                          <button type="button" class="btn btn-success btn-block">
-                            View Profile
-                          </button>
-                        </div>
-
-                        <!-- compatability percentage -->
-                        <div class="col-md-3 col-xs-3" style="padding-top: 20px">
-                          <!-- <a href="#" class="btn btn-default btn-lg disabled" type="button"  id="buttons">55%</a> -->
-                          <span class="label label-info">55%</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
+      <div class="jumbotron">
+        <h2>
+          Hello, {{user_name}}!
+        </h2>
+        <p>
+          Welcome to Coffee and Bagels - the online web app to meet new people and make new connections. This is your dashboard. Use it to connect with other people, view other profiles and like them.
+        </p>
       </div>
-   </div>
+
+      <div class="row match-my-cols row-eq-height">
+
+        <!-- column 1 -->
+        <div class="col-md-4 col-xs-12" id="colorscheme1">
+
+          <!-- user profile -->
+          <div class="row" id="user-profile">
+            <div class="col-md-12 col-xs-12" id="userinfo">
+
+              <img alt="User Profile Picture" src="{{url_for('static', filename='img/coffee.png')}}" class="center-block avatar img-thumbnail" />
+
+              <h3 class="text-center">{{user_name}}</h3>
+
+              <button class="btn btn-default center-block"><a id="modal-469485" href="#modal-container-469485" role="button" class="btn" data-toggle="modal">Edit User Profile</a></button>
+
+              <div class="modal fade" id="modal-container-469485" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    
+                      </button>
+                      <h4 class="modal-title" id="myModalLabel">
+                        Edit Account Information
+                      </h4>
+                    </div>
+
+                    <div class="modal-body">
+                      <form>
+                        <div class="form-group">
+                          <label for="firstName">First Name</label>
+                          <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                        </div>
+                        <div class="form-group">
+                          <label for="lastName">Last Name</label>
+                          <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                        </div>
+                        <div class="form-group">
+                          <label for="email">Email</label>
+                          <input type="text" class="form-control" id="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="password">Password</label>
+                          <input type="password" class="form-control" id="password" placeholder="Password" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">What is your gender?</label>
+                            <select class="form-control" id="gender">
+                              <option>-</option>
+                              <option>Male</option>
+                              <option>Female</option>
+                              <option>Rather Not Say</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Who are you looking to be matched with?</label>
+                            <select class="form-control" id="genderPreference">
+                              <option>-</option>
+                              <option>Male</option>
+                              <option>Female</option>
+                              <option>No Preference</option>
+                            </select>
+                        </div>
+
+                        
+                    </div>
+                    <div class="modal-footer">
+
+                      <button type="button" class="btn btn-default" data-dismiss="modal">
+                        Close
+                      </button> 
+                      <button type="button" class="btn btn-primary">
+                        Save changes
+                      </button>
+                    </div>
+
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div>
+
+          <!-- mutual likes -->
+          <div class="row" id="mutual-likes">
+            <div class="col-md-12 col-xs-12">
+              <h3 class="text-center" id="headings">Mutual Likes</h3>
+              
+              {% for dict in mutual_likes %}
+              <div class="row" id="cperson">
+                <div class="col-md-12 col-xs-12">
+                  
+                  <div class="row">
+
+                    <!-- user profile picture -->
+                    
+                    <div class="col-md-3 col-xs-3">
+                      <!-- <img alt="User Profile Picture" src="{{ url_for('static', filename='img/coffee.png') }}" class="center-block avatar" /> -->
+                      <img src="{{url_for('static', filename='img/coffee.png')}}" class="thumbnails center-block"/>
+                    </div>
+
+                    <!-- name & view profile button -->
+                    
+                    
+                    <div class="col-md-5 col-xs-5" style="padding-left: 50px; padding-top: 30px">
+                      {% for key in dict.keys() %}
+                      <h4 class="text-center">
+                        {{key}} {{dict[key]}}
+                      </h4> 
+                      {% endfor %}
+                    <div class="col-md-4 col-xs-4 center-block text-center">
+                      <button class="btn btn-success btn-sm"><a href="#">Contact</a></button>
+                    </div>
+                      <!-- <button type="button" class="btn btn-success btn-block text-center">
+                        Contact
+                      </button> -->
+                    </div>
+                    
+                    <!-- compatability percentage -->
+                    <div class="col-md-3 col-xs-3" id="button1" style="padding-top: 20px">
+                      <!-- <a href="#" class="btn btn-default btn-lg disabled" type="button" id="buttons">55%</a> -->
+                      <!-- <span class="label label-info">55%</span> -->
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+
+              <!-- person #1 -->
+
+              <!-- {% for dict in mutual_likes %}
+              <div class="row" id="persons">
+                <div class="col-md-12 col-xs-12"> 
+                  <div class="row"> -->
+                    <!-- photo of person -->
+                    <!-- <div class="col-md-3 col-xs-3">
+                      <img src="{{url_for('static', filename='img/coffee.png')}}" class="thumbnails center-block"/>
+                    </div> -->
+
+                    <!-- name of person -->
+                    <!-- {% for key in dict.keys() %}
+                    <h4 class="text-center">
+                      {{key}} {{dict[key]}}
+                    </h4> 
+                    {% endfor %} -->
+
+                    <!-- {% for key in dict.keys() %}
+                    <div class="col-md-5 col-xs-5">
+                      <h5 class="center-block text-center" >{{key}}{{dict[key]}}</h5>
+                    </div>
+                    {% endfor %} -->
+
+                    <!-- contact button -->
+                    <!-- <div class="col-md-4 col-xs-4 center-block text-center">
+                      <button class="btn btn-success btn-sm"><a href="#">Contact</a></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %} -->
+
+            </div>
+          </div>
+        </div>
+
+        <!-- column 2 -->
+        <div class="col-md-8 col-xs-12 column2 overflow-y" id="colorscheme2">
+          <div class="row">
+            <div class="col-md-12 col-xs-12">
+
+              <h2 class="text-center" id="headings1">Compatability</h2>
+
+              <!-- People -->
+              {% for dict in comp %}
+              <div class="row" id="cperson">
+                <div class="col-md-12 col-xs-12">
+                  
+                  <div class="row">
+
+                    <!-- user profile picture -->
+                    
+                    <div class="col-md-3 col-xs-3">
+                      <img alt="User Profile Picture" src="{{ url_for('static', filename='img/coffee.png') }}" class="center-block avatar" />
+                    </div>
+
+                    <!-- name & view profile button -->
+                    
+                    
+                    <div class="col-md-6 col-xs-6" style="padding-left: 50px; padding-top: 30px">
+                      {% for key in dict.keys() %}
+                      <h3 class="text-center">
+                        {{key}} {{dict[key]}}
+                      </h3> 
+                      {% endfor %}
+                      <button type="button" class="btn btn-success btn-block text-center">
+                        Like
+                      </button>
+                    </div>
+                    
+                    <!-- compatability percentage -->
+                    <div class="col-md-3 col-xs-3" id="button1" style="padding-top: 20px">
+                      <!-- <a href="#" class="btn btn-default btn-lg disabled" type="button" id="buttons">55%</a> -->
+                      <!-- <span class="label label-info">55%</span> -->
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
 {% endblock %}

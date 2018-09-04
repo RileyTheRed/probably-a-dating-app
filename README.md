@@ -1,4 +1,7 @@
-# CoffeeDate
+# Coffee and Bagels
+
+## ** Working directory - Coffee and Bagels **
+
 ## Login Layout: Done - Missing Style
 ## Registration Form: In-Progress
 ## User Page: Created
